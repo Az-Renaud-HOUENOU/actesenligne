@@ -41,9 +41,9 @@ return [
             'provider' => 'users',
         ],
 
-        'admin' => [
+        'etudiant' => [
             'driver' => 'session',
-            'provider' => 'super_administrateurs',
+            'provider' => 'etudiants',
         ],
     ],
 
@@ -69,9 +69,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'super_administrateurs' => [
+        'etudiants' => [
                 'driver' => 'eloquent',
-                'model' => App\Models\SuperAdministrateur::class,
+                'model' => App\Models\Etudiant::class,
         ],
 
         // 'users' => [
@@ -107,8 +107,8 @@ return [
             'throttle' => 60,
         ],
 
-        'super_administrateurs' => [
-            'provider' => 'super_administrateurs',
+        'etudiants' => [
+            'provider' => 'etudiants',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

@@ -2,11 +2,11 @@
     <div class="sidebar-start">
         <div class="sidebar-head">
             <a href="/" class="logo-wrapper" title="Home">
-                <span class="sr-only">Home</span>
+                <span class="sr-only">Acceuil</span>
                 <span class="icon logo" aria-hidden="true"></span>
                 <div class="logo-text">
-                    <span class="logo-title">Elegant</span>
-                    <span class="logo-subtitle">Dashboard</span>
+                    <span class="logo-title">ActesEnLigne</span>
+                    <span class="logo-subtitle">Tableau de bord . Admin</span>
                 </div>
 
             </a>
@@ -18,70 +18,31 @@
         <div class="sidebar-body">
             <ul class="sidebar-body-menu">
                 <li>
-                    <a class="active" href="/"><span class="icon home" aria-hidden="true"></span>Dashboard</a>
+                    <a class="active" href="/dashboard"><span class="icon home" aria-hidden="true"></span>Tableau de bord</a>
                 </li>
                 <li>
                     <a class="show-cat-btn" href="##">
-                        <span class="icon document" aria-hidden="true"></span>Posts
+                        <span class="icon document" aria-hidden="true"></span>Demandes
                         <span class="category__btn transparent-btn" title="Open list">
-                            <span class="sr-only">Open list</span>
+                            <span class="sr-only">Ouvrir liste</span>
                             <span class="icon arrow-down" aria-hidden="true"></span>
                         </span>
                     </a>
                     <ul class="cat-sub-menu">
                         <li>
-                            <a href="posts.html">All Posts</a>
+                            <a href="posts.html">Toutes les demandes</a>
                         </li>
                         <li>
-                            <a href="new-post.html">Add new post</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="show-cat-btn" href="##">
-                        <span class="icon folder" aria-hidden="true"></span>Categories
-                        <span class="category__btn transparent-btn" title="Open list">
-                            <span class="sr-only">Open list</span>
-                            <span class="icon arrow-down" aria-hidden="true"></span>
-                        </span>
-                    </a>
-                    <ul class="cat-sub-menu">
-                        <li>
-                            <a href="categories.html">All categories</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="show-cat-btn" href="##">
-                        <span class="icon image" aria-hidden="true"></span>Media
-                        <span class="category__btn transparent-btn" title="Open list">
-                            <span class="sr-only">Open list</span>
-                            <span class="icon arrow-down" aria-hidden="true"></span>
-                        </span>
-                    </a>
-                    <ul class="cat-sub-menu">
-                        <li>
-                            <a href="media-01.html">Media-01</a>
+                            <a href="new-post.html">Demandes en attente</a>
                         </li>
                         <li>
-                            <a href="media-02.html">Media-02</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="show-cat-btn" href="##">
-                        <span class="icon paper" aria-hidden="true"></span>Pages
-                        <span class="category__btn transparent-btn" title="Open list">
-                            <span class="sr-only">Open list</span>
-                            <span class="icon arrow-down" aria-hidden="true"></span>
-                        </span>
-                    </a>
-                    <ul class="cat-sub-menu">
-                        <li>
-                            <a href="pages.html">All pages</a>
+                            <a href="new-post.html">Demandes validées</a>
                         </li>
                         <li>
-                            <a href="new-page.html">Add new page</a>
+                            <a href="new-post.html">Demandes rejetées</a>
+                        </li>
+                        <li>
+                            <a href="new-post.html">Demandes traitées</a>
                         </li>
                     </ul>
                 </li>
@@ -93,47 +54,42 @@
                     <span class="msg-counter">7</span>
                 </li>
             </ul>
-            <span class="system-menu__title">system</span>
+            <span class="system-menu__title">systeme</span>
             <ul class="sidebar-body-menu">
                 <li>
                     <a href="appearance.html"><span class="icon edit" aria-hidden="true"></span>Appearance</a>
                 </li>
                 <li>
                     <a class="show-cat-btn" href="##">
-                        <span class="icon category" aria-hidden="true"></span>Extentions
+                        <span class="icon user-3" aria-hidden="true"></span>Utlisateurs
                         <span class="category__btn transparent-btn" title="Open list">
-                            <span class="sr-only">Open list</span>
+                            <span class="sr-only">Ouvrir liste</span>
                             <span class="icon arrow-down" aria-hidden="true"></span>
                         </span>
                     </a>
                     <ul class="cat-sub-menu">
                         <li>
-                            <a href="extention-01.html">Extentions-01</a>
+                            <a href="users-01.html">Utilisateurs</a>
                         </li>
                         <li>
-                            <a href="extention-02.html">Extentions-02</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="show-cat-btn" href="##">
-                        <span class="icon user-3" aria-hidden="true"></span>Users
-                        <span class="category__btn transparent-btn" title="Open list">
-                            <span class="sr-only">Open list</span>
-                            <span class="icon arrow-down" aria-hidden="true"></span>
-                        </span>
-                    </a>
-                    <ul class="cat-sub-menu">
-                        <li>
-                            <a href="users-01.html">Users-01</a>
+                            <a href="users-02.html">Roles</a>
                         </li>
                         <li>
-                            <a href="users-02.html">Users-02</a>
+                            <a href="users-02.html">Permissions</a>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a href="##"><span class="icon setting" aria-hidden="true"></span>Settings</a>
+                </li>
+            </ul>
+            <span class="system-menu__title">statistique</span>
+            <ul class="sidebar-body-menu">
+                <li>
+                    <a href="appearance.html"><span class="icon edit" aria-hidden="true"></span>Statistiques</a>
+                </li>
+                <li>
+                    <a href="##"><span class="icon setting" aria-hidden="true"></span>Exporter pdf</a>
                 </li>
             </ul>
         </div>

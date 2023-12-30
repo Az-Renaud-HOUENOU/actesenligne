@@ -18,16 +18,15 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Renaud',
             'email' => 'houenourenaud3@gmail.com',
-            'matricule' => '15978821',
             'password' => Hash::make('@HoAzRe@'),
             'fonction' => 'Super Administrateur'
-        ],
-        [
+        ]);
+        DB::table('etudiants')->insert([
             'name' => 'Jean',
             'email' => 'codjojean@gmail.com',
             'matricule' => '52896247',
             'password' => Hash::make('CJEAN'),
-            'fonction' => 'Etudiant'
+            'contact' => '96587412'
         ]);
     }
 }

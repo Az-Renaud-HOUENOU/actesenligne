@@ -3,7 +3,7 @@
     <div class="main-nav-start">
       <div class="search-wrapper">
         <i data-feather="search" aria-hidden="true"></i>
-        <input type="text" placeholder="Enter keywords ..." required>
+        <input type="text" placeholder="Entrer mots clés ..." required>
       </div>
     </div>
     <div class="main-nav-end">
@@ -13,13 +13,12 @@
       </button>
       <div class="lang-switcher-wrapper">
         <button class="lang-switcher transparent-btn" type="button">
-          EN
+          AN
           <i data-feather="chevron-down" aria-hidden="true"></i>
         </button>
         <ul class="lang-menu dropdown">
-          <li><a href="##">English</a></li>
-          <li><a href="##">French</a></li>
-          <li><a href="##">Uzbek</a></li>
+          <li><a href="##">Anglais</a></li>
+          <li><a href="##">Français</a></li>
         </ul>
       </div>
       <button class="theme-switcher gray-circle-btn" type="button" title="Switch theme">
@@ -69,7 +68,7 @@
             </a>
           </li>
           <li>
-            <a class="link-to-page" href="##">Go to Notifications page</a>
+            <a class="link-to-page" href="##">Aller à la page des Notifications</a>
           </li>
         </ul>
       </div>
@@ -83,15 +82,15 @@
         <ul class="users-item-dropdown nav-user-dropdown dropdown">
           <li><a href="##">
               <i data-feather="user" aria-hidden="true"></i>
-              <span>Profile</span>
+              <span>Profil</span>
             </a></li>
           <li><a href="##">
               <i data-feather="settings" aria-hidden="true"></i>
-              <span>Account settings</span>
+              <span>Paramètres</span>
             </a></li>
           <li><a class="danger" href="##">
               <i data-feather="log-out" aria-hidden="true"></i>
-              <span>Log out</span>
+              <span>Se deconnecter</span>
             </a></li>
         </ul>
       </div>

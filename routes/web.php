@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +20,10 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('admin.layouts.index');
-})->name('dashboard');
+})->name('dashboard')->middleware('admin');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/admin', [LoginController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/etudiant', [App\Http\Controllers\Etudiant\LoginController::class, 'login'])->name('etudiant.login');

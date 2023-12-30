@@ -29,14 +29,14 @@
                         <h4 class="text-center" style="font-family: Poppins;">DEMANDER UN ACTE</h4>
                         <p class="text-center" style="font-family: Poppins;">Se connecter à son compte étudiant</p> <br>
                         
-                        <form method="POST" action="{{ route('student-login') }}">
+                        <form method="POST" action="{{ route('etudiant.login') }}">
                             @csrf
                             <div class="input-group mt-4">
                                 
-                                <input type="text" placeholder='Matricule' id="matricule" name="matricule" class="form-control @error('email') is-invalid @enderror border-0" value="{{ old('email') }}" required autofocus>
+                                <input type="text" placeholder='Matricule' id="matricule" name="matricule" class="form-control @error('matricule') is-invalid @enderror border-0" value="{{ old('matricule') }}" required autocomplete="matricule" autofocus>
                                 <label for="matricule" class='input-group-text bg-white border-0'><i class='uil uil-user text-secondary fs-5'></i></label>
 
-                                @error('email')
+                                @error('matricule')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -46,8 +46,14 @@
 
                             <div class="input-group mt-4">
                                 
-                                <input type="password" class='form-control border-0' placeholder='Mot de passe' id="password" value='' name="password">
-                                <label for="password" class='input-group-text bg-white border-0'><i class='uil uil-lock text-secondary fs-5'></i></label> 
+                                <input type="password" class="form-control @error('password') is-invalid @enderror border-0" placeholder='Mot de passe' id="password" value='' name="password">
+                                <label for="password" class='input-group-text bg-white border-0'><i class='uil uil-lock text-secondary fs-5'></i></label>
+                                
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <span class='error'></span>
 
