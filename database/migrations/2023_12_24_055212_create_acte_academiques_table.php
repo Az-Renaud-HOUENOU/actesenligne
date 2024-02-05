@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('acte_academiques', function (Blueprint $table) {
             $table->id();
             $table->string('type_acte');
-            $table->string('date_delivrance');
-            $table->string('fichier');
+            $table->text('description');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class ActeAcademique extends Model
 {
     use HasFactory;
+
+
+    protected $fillable = [
+        'type_acte'
+    ];
 }

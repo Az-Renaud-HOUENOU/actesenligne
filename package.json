@@ -14,5 +14,11 @@
         "sass": "^1.56.1",
         "vite": "^5.0.0",
         "vue": "^3.2.37"
+    },
+    "dependencies": {
+        "ckeditor4": "^4.23.0",
+        "datatables.net-dt": "^1.13.8",
+        "jquery": "^3.7.1",
+        "tinymce": "^6.8.2"
     }
 }

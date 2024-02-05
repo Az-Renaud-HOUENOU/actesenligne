@@ -23,7 +23,7 @@ class LoginRequest extends FormRequest
     {
         return [
             'matricule' => 'required|string',
-            'password' => 'required|min:8'
+            'password' => 'required|min:4'
         ];
     }
 }
