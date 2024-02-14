@@ -52,15 +52,6 @@ class ActeController extends Controller
      */
     public function show(string $id)
     {
-        /*$acte = ActeAcademique::join('statuts', 'inscriptions.statuts_id', '=', 'statuts.id')
-        ->join('formations', 'inscriptions.formations_id', '=', 'formations.id')
-        ->join('categformations', 'formations.categformations_id', '=', 'categformations.id')
-        ->select('inscriptions.*', 'inscriptions.created_at','statuts.libelle','formations.*','categformations.*')
-        ->where('statuts.libelle','En attente')
-        ->where('actes.id',$id)
-        ->orderby('actes.id','esc')
-        ->first();*/
-
         return view('admin.layouts.acteacademique.show-acte', compact('acte'));
     }
 
@@ -75,10 +66,10 @@ class ActeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ActeAcademique $acte, string $id)
+    public function update(Request $request, ActeAcademique $acte)
     {
-        $acte->type_acte = $request->input('title');
-        $acte->description = $request->input('content');
+        $acte->type_acte = $request->input('type_acte');
+        $acte->description = $request->input('description');
         $acte->save();
         return redirect()->route('actes.index');
     }
@@ -86,7 +77,7 @@ class ActeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id, ActeAcademique $acte)
+    public function destroy(string $id)
     {
         $acte = ActeAcademique::find($id);
 

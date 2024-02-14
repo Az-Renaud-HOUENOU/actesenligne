@@ -36,7 +36,7 @@
                                                 <div class="col-xl-4 col-sm-4 border-right-1 prf-col">
                                                     <div class="profile-name">
                                                         <h4 class="text-primary">{{Auth::user()->name}}</h4>
-                                                        <p>UX / UI Designer</p>
+                                                        <p>{{Auth::user()->fonction}}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-4 col-sm-4 border-right-1 prf-col">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActeAcademique;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -19,7 +20,8 @@ class StudentDashboardController extends Controller
     }
 
     public function index () {
-        return view('student.dashboard');
+        $actes=ActeAcademique::all();
+        return view('student.dashboard', compact('actes'));
     }
 
     public function profil () {

@@ -37,6 +37,8 @@
 	<link rel="stylesheet" href=" {{ asset('student/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }} ">
     <link rel="stylesheet" href="{{ asset('student/css/style.css') }}">
     <link rel="stylesheet" href=" {{ asset('student/css/skin-3.css') }} ">
+    <!-- Form step -->
+    <link href="{{asset('admin/vendor/jquery-steps/css/jquery.steps.css')}}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
    

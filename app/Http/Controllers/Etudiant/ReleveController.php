@@ -65,6 +65,7 @@ class ReleveController extends Controller
         $demande->prenom = $request->input('prenom');
         $demande->matricule = $request->input('matricule');
         $demande->option = $request->input('option');
+        $demande->annee = $request->input('annee-academique');
         /*$demande->fichepre_valid = $request->input('fichepre_valid');
         $demande->acte_nais = $request->input('acte_nais');
         $demande->cip = $request->input('cip');

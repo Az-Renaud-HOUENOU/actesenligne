@@ -38,7 +38,12 @@ class DemandeController extends Controller
      */
     public function show(string $id)
     {
-        $demande=Demande::find($id);
+        $demande=Demande::findOrFail($id);
+
+        if (!$demande) {
+            return redirect()->back()->with('error', 'Demande non existant.');
+        }
+
         return view('admin.layouts.demande.details', compact('demande'));
     }
 
@@ -84,11 +89,11 @@ class DemandeController extends Controller
 
     public function getDemandesTraitees(){
         $demandesTraitees=Demande::where('statut','En cours de traitement')->get();
-        return view('admin.layouts.demande.liste-Traitees', compact('demandesTraitees'));
+        return view('admin.layouts.demande.liste-demande', compact('demandesTraitees'));
     }
 
     public function getDemandesRejetees(){
         $demandesRejetees=Demande::where('statut','Rejetée')->get();
-        return view('admin.layouts.demande.liste-Rejetees', compact('demandesRejetees'));
+        return view('admin.layouts.demande.liste-demande', compact('demandesRejetees'));
     }
 }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('prenom')->nullable();
             $table->integer('matricule');
             $table->string('option');
+            $table->string('annee');
             $table->date('fichepre_valid');
             $table->string('acte_nais');
             $table->string('cip');

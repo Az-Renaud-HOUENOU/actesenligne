@@ -1,10 +1,10 @@
 <div class="dlabnav">
     <div class="dlabnav-scroll">
         <ul class="metismenu" id="menu">
-            <li class="nav-label first">Main Menu</li>
-            <li><a class="has-arrow" href="{{ url('/student/dashboard') }}" aria-expanded="false">
+            <li class="nav-label first">Menu Principal</li>
+            <li><a class="" href="{{ url('/student/dashboard') }}" aria-expanded="false">
                     <i class="la la-home"></i>
-                    <span class="nav-text">Dashboard</span>
+                    <span class="nav-text">Tableau de bord</span>
                 </a>
                 
             </li>

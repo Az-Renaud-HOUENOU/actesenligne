@@ -15,15 +15,11 @@
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Components</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">App</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Demande/Suivie</a></li>
                 </ol>
             </div>
         </div>
-       <p class="text-center"> Veuillez Entrez le code OPT que vous reçut dans votre mail *</p>
-
-            
-
        <div class="row">
         <div class="col-xl-12 col-xxl-12">
             <div class="card">
@@ -31,16 +27,26 @@
                     <h4 class="card-title">@yield('title')</h4>
                 </div>
                 <div class="card-body">
-                    <form  action=" {{ route('student.suivie.store') }}" method="POST" id="step-form-horizontal" class="step-form-horizontal" enctype="multipart/form-data">
+                    <form  action=" {{ route('student.suivie.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div>
-                            <h4>Entre Le code a six (06) chiffre que vous avez recus</h4>
+                            <h4>Entre Le code a six (06) chiffre que vous avez recu</h4>
                             <section>
-                                <div class="row">
-                                    
-
-                                    <div class="col-lg-12 mb-4">
-                                        <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="otp" class="form-label"><strong>OTP CODE <span style="color:red">*</span></strong></label>
+                                                <input id="otp" type="text" class="form-control  @error('otp') is-invalid  @enderror" name="otp" required autocomplete="otp" placeholder="Entrez le code de la demande">
+                                                @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="text-center mt-4">
+                                                <button type="submit" class="btn btn-primary btn-block">Vérifier</button>
+                                            </div>
+                                            <!-- <div class="form-group">
                                             <label class="text-label">OTP CODE*</label>
                                             <div class="input-group">
                                                 <input type="text" name="otp" class="form-control  @error('otp') is-invalid  @enderror" id="inputGroupPrepend2" aria-describedby="inputGroupPrepend2" placeholder="Entrez le code à six chiffre" >
@@ -50,11 +56,10 @@
                                                 </div>  
                                                 @enderror
                                             </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-success">Track</button> -->
                                         </div>
-                                        <button type="submit" class="btn btn-success">Track</button>
                                     </div>
-                                  
-                                </div>
                             </section>
                         </div>
                     </form>

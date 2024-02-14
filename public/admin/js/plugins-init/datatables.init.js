@@ -90,4 +90,53 @@ let dataSet = [
         this.nodes().to$().removeClass('selected')
     });
    
+
+
+    //tableEtudiant
+    var tableEtudiant = $('#tableEtudiant').DataTable({
+        createdRow: function ( row, data, index ) {
+            $(row).addClass('selected')
+        } 
+    });
+    
+    tableEtudiant.on('click', 'tbody tr', function() {
+    var $row = tableEtudiant.row(this).nodes().to$();
+    var hasClass = $row.hasClass('selected');
+    if (hasClass) {
+        $row.removeClass('selected')
+    } else {
+        $row.addClass('selected')
+    }
+    })
+    
+    tableEtudiant.rows().every(function() {
+    this.nodes().to$().removeClass('selected')
+    });
+
+
+
+    //tableAdmin
+    var tableAdmin = $('#tableAdmin').DataTable( {
+        createdRow: function ( row, data, index ) {
+            $(row).addClass('selected')
+        },
+
+        "scrollY":        "42vh",
+        "scrollCollapse": true,
+        "paging":         false
+    });
+
+    tableAdmin.on('click', 'tbody tr', function() {
+        var $row = tableAdmin.row(this).nodes().to$();
+        var hasClass = $row.hasClass('selected');
+        if (hasClass) {
+            $row.removeClass('selected')
+        } else {
+            $row.addClass('selected')
+        }
+    })
+        
+    tableAdmin.rows().every(function() {
+        this.nodes().to$().removeClass('selected')
+    });
 })(jQuery);

@@ -19983,10 +19983,10 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     width: 100%; }
 
 .profile .profile-photo {
-  max-width: 140px;
+  max-width: 150px;
   position: absolute;
-  top: -80px;
-  left: 30px; }
+  bottom: -75px;
+  left: 100px; }
   @media only screen and (max-width: 1199px) {
     .profile .profile-photo {
       left: 15px; } }

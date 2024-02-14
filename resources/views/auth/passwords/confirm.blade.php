@@ -1,49 +1,32 @@
-@extends('layouts.app')
+@extends('layouts.layout-connect')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Confirmez le Mot de Passe') }}</div>
+<h4 class="text-center mb-4">{{ __('Confirmez le Mot de Passe') }}</h4>
 
-                <div class="card-body">
-                    {{ __('Veuillez confirmer votre mot de passe avant de continuer.') }}
+{{ __('Veuillez confirmer votre mot de passe avant de continuer.') }}
 
-                    <form method="POST" action="{{ route('password.confirm') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Mot de Passe') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Confirmez le Mot de Passe') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Mot de Passe Oublié?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<form method="POST" action="{{ route('password.confirm') }}">
+    @csrf
+    <div class="form-group">
+        <label for="password" class="form-label"><strong>{{ __('Mot de Passe') }}</strong></label>
+        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+        @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
     </div>
-</div>
+    <div class="form-row d-flex justify-content-between mt-4 mb-2">
+        @if (Route::has('password.request'))
+            <div class="form-group">
+                <a class="btn btn-link" href="{{ route('password.request') }}">
+                    {{ __('Mot de Passe Oublié?') }}
+                </a>
+            </div>
+        @endif
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary btn-block">{{ __('Confirmer le Mot de Passe') }}</button>
+    </div>
+</form>
 @endsection

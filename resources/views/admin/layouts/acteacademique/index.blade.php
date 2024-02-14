@@ -3,6 +3,13 @@
 @section('title', 'Liste acte')
 
 @section('content')
+
+@if (session('success'))
+    <div class="alert alert-success solid ">
+        <strong>Success!</strong> {{ session('success') }}
+    </div>
+@endif
+
 <div class="row page-titles mx-0">
     <div class="col-sm-6 p-md-0">
         <div class="welcome-text">
@@ -36,7 +43,7 @@
                                 <th>#</th>
                                 <th>Intitulé de l'acte</th>
                                 <th>Description</th>
-                                <th>Action</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,19 +51,20 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$acte->type_acte}}</td>
-                                    <td>{{$acte->description}}</td>
+                                    <td>{!!$acte->description!!}</td>
                                     <td>
-                                        <button type="button" class="btn btn-primary">
-                                            <a class="" href="{{route('actes.edit', $acte->id) }}">
-                                                <i class="bi bi-pencil" style="color: #015291"></i>
-                                            </a>
-                                        </button>
+                                            <span>
+                                                <a title="Modifier" class="btn btn-warning" data-toggle="modal" data-target="#basicModal-edit-acte-academique-{{$acte->id}}">
+                                                    <i class="fa-regular fa-pen-to-square"></i>
+                                                </a>
+                                            </span>
+                                        @include('admin.layouts.acteacademique.edit-acte',["acte"=>$acte])
 
                                         <form action="{{ route('actes.destroy', $acte->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet acte ?')">
-                                                <i id ="bttn" class="bi bi-trash" title="Supprimer"></i>
+                                            <button title="Supprimer" type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet acte ?')">
+                                                <span><i class="fa-regular fa-trash-can"></i></span>
                                             </button>
                                         </form>
                                     </td>
@@ -68,7 +76,7 @@
                                 <th>#</th>
                                 <th>Intitulé de l'acte</th>
                                 <th>Description</th>
-                                <th>Action</th>
+                                <th>Actions</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -77,49 +85,6 @@
         </div>
     </div>
 
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Datatable</h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="example2" class="display" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Donna Snider</td>
-                                <td>Customer Support</td>
-                                <td>New York</td>
-                                <td>27</td>
-                                <td>2011/01/25</td>
-                                <td>$112,000</td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 @include('admin.layouts.acteacademique.create-acte')

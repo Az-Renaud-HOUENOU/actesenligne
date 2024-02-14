@@ -9,7 +9,7 @@
                                 </span>
                                 <div class="dropdown-menu p-0 m-0">
                                     <form>
-                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                        <input class="form-control" type="search" placeholder="Rechercher" aria-label="Rechercher">
                                     </form>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                                         <i class="icon-user"></i>
                                         <span class="ml-2">Profile </span>
                                     </a>
-                                    <a href="./email-inbox.html" class="dropdown-item">
+                                    <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank" class="dropdown-item">
                                         <i class="icon-envelope-open"></i>
                                         <span class="ml-2">Inbox </span>
                                     </a>
@@ -102,8 +102,8 @@
                         </ul>
                     </div>
                     <div class="profile_info">
-                      <span>Welcome,</span>
-                      <h3>{{Auth::user()->name}}</h3>
+                      <span>Bienvenu,</span>
+                      <h4>{{Auth::user()->name}}</h4>
                     </div>
                   @endauth
                 </nav>

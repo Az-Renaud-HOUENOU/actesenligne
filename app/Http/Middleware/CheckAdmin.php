@@ -18,9 +18,6 @@ class CheckAdmin
         if($request->user() && $request->user()->fonction === 'Super Administrateur'){
             return $next($request);
         }
-        elseif($request->user() && $request->user()->fonction === 'Personnel Administratif'){
-            return $next($request);
-        }
         return redirect('/');
     }
 }

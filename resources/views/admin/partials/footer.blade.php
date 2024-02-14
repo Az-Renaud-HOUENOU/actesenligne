@@ -1,6 +1,6 @@
 <div class="footer">
     <div class="copyright">
-    <p>Copyright © Designé &amp; Developpé par <a href="#" target="_blank">IFRI-UAC</a> 2023</p>
-    <p>Distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a></p> 
+    <p>Copyright © Designé &amp; Developpé par <a href="mailto:houenourenaud3@gmail.com" target="_blank">Renaud</a> en 2024</p>
+    <p>Distribué par <a href="{{url('https://www.ifri-uac.bj')}}" target="_blank">IFRI-UAC</a></p> 
   </div>
 </div>
