@@ -1,7 +1,7 @@
 @extends('layouts.layout-connect')
 
 @section('content')
-                                    <h4 class="text-center mb-4">{{ __('Sign up your account') }}</h4>
+                                    <h4 class="text-center mb-4">{{ __('Inscrivez votre compte') }}</h4>
                                     <form method="POST" action="{{ route('register') }}">
                                         @csrf
                                         <div class="form-group">
@@ -40,6 +40,6 @@
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
-                                        <p>Already have an account? <a class="text-primary" href="{{ route('login') }}">Sign in</a></p>
+                                        <p>Vous avez déjà un compte ? <a class="text-primary" href="{{ route('login') }}">Se connecter</a></p>
                                     </div>
 @endsection

@@ -19,11 +19,21 @@ class Etudiant extends Authenticatable
      */
     protected $fillable = [
         'matricule',
-        'name',
+        'nom',
+        'prenom',
+        'option',
         'email',
         'contact',
         'password',
     ];
+    
+    /**
+     * Relation: Un étudiant peut avoir plusieurs demandes.
+     */
+    public function demandes(): HasMany
+    {
+        return $this->hasMany(Demande::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

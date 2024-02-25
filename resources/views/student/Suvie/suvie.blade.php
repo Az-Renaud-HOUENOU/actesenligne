@@ -30,7 +30,7 @@
                     <form  action=" {{ route('student.suivie.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div>
-                            <h4>Entre Le code a six (06) chiffre que vous avez recu</h4>
+                            <h4>Entre Le code a neuf (09) chiffre que vous avez recu</h4>
                             <section>
                                     <div class="row">
                                         <div class="col-lg-6 mb-4">
@@ -46,18 +46,6 @@
                                             <div class="text-center mt-4">
                                                 <button type="submit" class="btn btn-primary btn-block">Vérifier</button>
                                             </div>
-                                            <!-- <div class="form-group">
-                                            <label class="text-label">OTP CODE*</label>
-                                            <div class="input-group">
-                                                <input type="text" name="otp" class="form-control  @error('otp') is-invalid  @enderror" id="inputGroupPrepend2" aria-describedby="inputGroupPrepend2" placeholder="Entrez le code à six chiffre" >
-                                                @error('otp')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>  
-                                                @enderror
-                                            </div>
-                                            </div>
-                                            <button type="submit" class="btn btn-success">Track</button> -->
                                         </div>
                                     </div>
                             </section>
@@ -67,12 +55,32 @@
             </div>
         </div>
     </div>
-        
-    
     </div>
-
-
-        
     </div>
 </div>
+
+@if (session('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Succès!',
+                text: "{{ session('success') }}",
+            });
+        });
+    </script>
+@endif
+
+@if (session('error'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur!',
+                text: "{{ session('error') }}",
+            });
+        });
+    </script>
+@endif
+
 @endsection

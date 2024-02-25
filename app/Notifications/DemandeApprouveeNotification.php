@@ -2,10 +2,11 @@
 
 namespace App\Notifications;
 
+use App\Models\Demande;
 use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
 class DemandeApprouveeNotification extends Notification
 {
@@ -14,9 +15,11 @@ class DemandeApprouveeNotification extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public $demande;
+
+    public function __construct(Demande $demande)
     {
-        //
+        $this->demande = $demande;
     }
 
     /**
@@ -29,17 +32,12 @@ class DemandeApprouveeNotification extends Notification
         return ['mail'];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     */
-    public function toMail(object $notifiable): MailMessage
+    public function toMail($notifiable)
     {
-        $demande = $this->demande; 
-        return (new MailMessage)
-        ->subject('Votre demande a été approuvée')
-        ->line('Votre demande a été approuvée avec succès.')
-        ->action('Voir la demande', url('/demandes/' . $demande->id)) // Lien pour voir la demande
-        ->line('Merci d\'utiliser notre application!');
+        return (new \Illuminate\Notifications\Messages\MailMessage)
+                    ->subject('Sujet de l\'email')
+                    ->greeting('Bonjour!')
+                    ->line('Votre demande a été approuvée.');
     }
 
     /**
@@ -50,7 +48,9 @@ class DemandeApprouveeNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            //
+            'etudiant' => $this->demande->etudiant->nom,
+            'type_acte_demande' => $this->demande->acteAcademique->type_acte,
+            'heure_demande' => now(),
         ];
     }
 }

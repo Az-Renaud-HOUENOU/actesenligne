@@ -20,7 +20,6 @@
                         <div class="row mb-3">
                             <div class="col-12">
                                 <label for="description" class="form-label">Description</label>
-                                <!-- <div class="quill-editor-full" style="height: 300px;"></div>style="display:none" class="contenu_quill" -->
                                 <textarea name="description" id="description2" class="form-control" cols="5" rows="4" >{{ $acte->description }}</textarea>
                             </div>
                         </div>

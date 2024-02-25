@@ -21,7 +21,15 @@ class StudentDashboardController extends Controller
 
     public function index () {
         $actes=ActeAcademique::all();
-        return view('student.dashboard', compact('actes'));
+        
+        $notifications = collect(session('etudiant_notifications', []))->map(function ($notification) {
+            return [
+                'type_acte_demande' => $notification->demande->acteAcademique->type_acte,
+                'heure_demande' => $notification->heure_demande,
+            ];
+        });
+        
+        return view('student.dashboard', compact('actes','notifications'));
     }
 
     public function profil () {

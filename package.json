@@ -19,6 +19,7 @@
         "ckeditor4": "^4.23.0",
         "datatables.net-dt": "^1.13.8",
         "jquery": "^3.7.1",
+        "sweetalert2": "^11.10.5",
         "tinymce": "^6.8.2"
     }
 }

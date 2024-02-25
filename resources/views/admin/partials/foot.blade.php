@@ -33,22 +33,6 @@
 <script src="{{asset('admin/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('admin/js/plugins-init/datatables.init.js')}}"></script>
 
-<!-- Summernote -->
-<script src="{{asset('admin/vendor/summernote/js/summernote.min.js')}}"></script>
-<!-- Summernote init -->
-<script src="{{asset('admin/js/plugins-init/summernote-init.js')}}"></script>
-
-<!-- Toastr -->
-<script src="{{asset('admin/vendor/toastr/js/toastr.min.js')}}"></script>
-
-<!-- All init script -->
-<script src="{{asset('admin/js/plugins-init/toastr-init.js')}}"></script>
-
-<script src="{{asset('admin/js/plugins-init/quill-init.js')}}"></script>
-<script src="{{asset('admin/vendor/quill\dist/quill.min.js')}}"></script>
-
 <script src="{{asset('admin/js/plugins-init/editor-tinymce-init.js')}}"></script>
 <script src="{{asset('admin/vendor/tinymce/tinymce.min.js')}}"></script>
 <script src="{{asset('js/tinymce.js')}}" type="text/javascript"></script>
-
-<!-- <script src="{{asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script> -->

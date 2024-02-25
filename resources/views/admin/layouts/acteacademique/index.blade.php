@@ -53,20 +53,22 @@
                                     <td>{{$acte->type_acte}}</td>
                                     <td>{!!$acte->description!!}</td>
                                     <td>
+                                        <div class="row">
                                             <span>
                                                 <a title="Modifier" class="btn btn-warning" data-toggle="modal" data-target="#basicModal-edit-acte-academique-{{$acte->id}}">
-                                                    <i class="fa-regular fa-pen-to-square"></i>
+                                                    <i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
                                             </span>
-                                        @include('admin.layouts.acteacademique.edit-acte',["acte"=>$acte])
+                                            @include('admin.layouts.acteacademique.edit-acte',["acte"=>$acte])
 
-                                        <form action="{{ route('actes.destroy', $acte->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button title="Supprimer" type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet acte ?')">
-                                                <span><i class="fa-regular fa-trash-can"></i></span>
-                                            </button>
-                                        </form>
+                                            <form action="{{ route('actes.destroy', $acte->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button title="Supprimer" type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet acte ?')">
+                                                    <span><i class="fa fa-trash-can"></i></span>
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

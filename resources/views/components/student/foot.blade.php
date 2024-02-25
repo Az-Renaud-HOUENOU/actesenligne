@@ -49,3 +49,5 @@
 
     <!-- Form step init -->
     <script src="{{asset('admin/js/plugins-init/jquery-steps-init.js')}}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

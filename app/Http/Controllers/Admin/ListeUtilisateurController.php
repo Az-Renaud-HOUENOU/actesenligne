@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Etudiant;
 use App\Models\User;
+use App\Models\Etudiant;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ListeUtilisateurController extends Controller
 {
@@ -16,7 +17,10 @@ class ListeUtilisateurController extends Controller
     {
         $etudiants=Etudiant::all(); //latest()->get()
         $administrateurs=User::all();
-        return view('admin.layouts.utilisateurs.liste-utilisateur', compact('etudiants','administrateurs'));
+        
+        $admin = Auth::user();
+        $notifications = $admin->unreadNotifications;
+        return view('admin.layouts.utilisateurs.liste-utilisateur', compact('etudiants','administrateurs','notifications'));
     }
 
     /**

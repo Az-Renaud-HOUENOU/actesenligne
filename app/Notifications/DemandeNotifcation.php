@@ -16,13 +16,12 @@ class DemandeNotifcation extends Notification
      * Create a new notification instance.
      */
     public $demande;
+    public $heure_demande;
 
-    public function __construct($demande)
+    public function __construct(Demande $demande)
     {
-
-        //
-        $this->demande = $demande;  
-
+        $this->demande = $demande;
+        $this->heure_demande = now();
     }
 
 
@@ -38,25 +37,6 @@ class DemandeNotifcation extends Notification
     }
 
     /**
-     * Get the mail representation of the notification.
-     */
-    public function toMail(object $notifiable): MailMessage
-    {
-        $demande = $this->demande;
-        $verificationLink = url('/verification/' . $demande->id . '/' . $demande->otp);
-
-
-        return (new MailMessage)
-                    ->subject('Nouvelle demande créée')
-                    ->line('Une nouvelle demande a été créée avec succès.')
-                    ->line('Détails de la demande :')
-                    ->line('Nom: ' . $demande->nom)
-                    ->line('Prénom: ' . $demande->prenom)
-                    ->action('Vérifier la demande', $verificationLink)
-                    ->line('Thank you for using our application!');
-    }
-
-    /**
      * Get the array representation of the notification.
      *
      * @return array<string, mixed>
@@ -64,7 +44,8 @@ class DemandeNotifcation extends Notification
     public function toDatabase(object $notifiable): array
     {
         return [
-            
+            'type_acte_demande' => $this->demande->acteAcademique->type_acte,
+            'heure_demande' => now(),
         ];
     }
 }

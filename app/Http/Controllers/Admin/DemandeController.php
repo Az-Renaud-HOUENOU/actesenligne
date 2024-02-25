@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Demande;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DemandeController extends Controller
 {
@@ -14,7 +15,10 @@ class DemandeController extends Controller
     public function index()
     {
         $demandes=Demande::all();
-        return view('admin.layouts.demande.liste-demande', compact('demandes'));
+
+        $admin = Auth::user();
+        $notifications = $admin->unreadNotifications;
+        return view('admin.layouts.demande.liste-demande', compact('demandes','notifications'));
     }
 
     /**
@@ -39,10 +43,6 @@ class DemandeController extends Controller
     public function show(string $id)
     {
         $demande=Demande::findOrFail($id);
-
-        if (!$demande) {
-            return redirect()->back()->with('error', 'Demande non existant.');
-        }
 
         return view('admin.layouts.demande.details', compact('demande'));
     }
@@ -85,15 +85,5 @@ class DemandeController extends Controller
         $demande->save();
 
         return redirect()->back();
-    }
-
-    public function getDemandesTraitees(){
-        $demandesTraitees=Demande::where('statut','En cours de traitement')->get();
-        return view('admin.layouts.demande.liste-demande', compact('demandesTraitees'));
-    }
-
-    public function getDemandesRejetees(){
-        $demandesRejetees=Demande::where('statut','Rejetée')->get();
-        return view('admin.layouts.demande.liste-demande', compact('demandesRejetees'));
     }
 }

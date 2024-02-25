@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Etudiant;
 
-use App\Models\Demande;
+use App\Models\Paiement;
+use App\Models\DocumentsDemande;
 use App\Models\Etudiant;
+use App\Models\Demande;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DemandeVerificationEmail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -12,6 +16,9 @@ use App\Notifications\DemandeNotifcation;
 use Illuminate\Notifications\Notification;
 use App\Http\Requests\Etudiant\DemandeRequest;
 use App\Notifications\DemandeApprouveeNotification;
+use Illuminate\Support\Facades\DB;
+use App\Helpers\CodeHelpers;
+use App\Models\User;
 
 class ReleveController extends Controller
 {
@@ -29,20 +36,13 @@ class ReleveController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index($demande)
     {
         $etudiant=Auth::guard('etudiant')->user();
-        $typeActe = $request->input('typeActe');
-        $champsDemande = $this->getChampsDemandeSelonTypeActe($typeActe); // À implémenter
-        return view('student.Demande.demande', compact('etudiant', 'champsDemande'));
+        $notifications = collect(session('etudiant_notifications', []));
+        
+        return view('student.Demande.demande', compact('etudiant','demande','notifications'));
     }
-
-    private function getChampsDemandeSelonTypeActe($typeActe)
-    {
-        // À implémenter : Retourne les champs du formulaire selon le type d'acte
-    }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -56,160 +56,79 @@ class ReleveController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(DemandeRequest $request)
+    public function store(Request $request)
     {
-        $validatedData = $request->validated();
-        dd($validatedData);
-        $demande = new Demande();
-        $demande->nom = $request->input('nom');
-        $demande->prenom = $request->input('prenom');
-        $demande->matricule = $request->input('matricule');
-        $demande->option = $request->input('option');
-        $demande->annee = $request->input('annee-academique');
-        /*$demande->fichepre_valid = $request->input('fichepre_valid');
-        $demande->acte_nais = $request->input('acte_nais');
-        $demande->cip = $request->input('cip');
-        $demande->fiche_prederniere = $request->input('fiche_prederniere');
-        $demande->releve_sem1 = $request->input('releve_sem1');
-        $demande->releve_sem2 = $request->input('releve_sem2');
-        $demande->releve_sem3 = $request->input('releve_sem3');
-        $demande->releve_sem4 = $request->input('releve_sem4');
-        $demande->releve_sem5 = $request->input('releve_sem5');
-        $demande->releve_sem6 = $request->input('releve_sem6');
-        $demande->quit_memo = $request->input('quit_memo');
-        $demande->copie_attes = $request->input('copie_attes');
-        $demande->copie_dipl = $request->input('copie_dipl');
-        $demande->copie_act = $request->input('copie_act');
-        $demande->demande_diro = $request->input('demande_diro');*/
-        $demande->pay_num = $request->input('pay_num');
-    
-        if ($request->hasFile('preuve')) {
-            $preuve = $request->file('preuve');
-            $filename = time().'_'.$preuve->getClientOriginalName();
-            $preuve->move(public_path('Demande/Photos/'), $filename);
-            $demande->preuve = $filename;
-        }
-    
-        if ($request->hasFile('acte_nais')) {
-            $acte_nais = $request->file('acte_nais');
-            $filename = time().'_'.$acte_nais->getClientOriginalName();
-            $acte_nais->move(public_path('Demande/Photos/'), $filename);
-            $demande->acte_nais = $filename;
-        }
+        $otp = CodeHelpers::generateOTP();
 
-        if ($request->hasFile('fichepre_valid')) {
-            $fichepre_valid = $request->file('fichepre_valid');
-            $filename = time().'_'.$fichepre_valid->getClientOriginalName();
-            $fichepre_valid->move(public_path('Demande/Photos/'), $filename);
-            $demande->fichepre_valid = $filename;
-        }
+        $paiement = Paiement::create([
+            'pay_num' => $request->pay_num,
+            'preuve' => $request->hasFile('preuve') ?  $request->file('preuve')->store('documents', 'public') : null,
+            'montant_paye' => $request->montant_paye,
+        ]);
+        
+        $document = DocumentsDemande::create([
+            'acte_nais' => $request->hasFile('acte_nais') ?  $request->file('acte_nais')->store('documents', 'public') : null,
+            'cip' => $request->hasFile('cip') ?  $request->file('cip')->store('documents', 'public') : null,
+            'fichepre_valid' => $request->hasFile('fichepre_valid') ?  $request->file('fichepre_valid')->store('documents', 'public') : null,
+            'fiche_prederniere' => $request->hasFile('fiche_prederniere') ?  $request->file('fiche_prederniere')->store('documents', 'public') : null,
+            'releve_sem1' => $request->hasFile('releve_sem1') ?  $request->file('releve_sem1')->store('documents', 'public') : null,
+            'releve_sem2' => $request->hasFile('releve_sem2') ?  $request->file('releve_sem2')->store('documents', 'public') : null,
+            'releve_sem3' => $request->hasFile('releve_sem3') ?  $request->file('releve_sem3')->store('documents', 'public') : null,
+            'releve_sem4' => $request->hasFile('releve_sem4') ?  $request->file('releve_sem4')->store('documents', 'public') : null,
+            'releve_sem5' => $request->hasFile('releve_sem5') ?  $request->file('releve_sem5')->store('documents', 'public') : null,
+            'releve_sem6' => $request->hasFile('releve_sem6') ?  $request->file('releve_sem6')->store('documents', 'public') : null,
+            'quit_memo' => $request->hasFile('quit_memo') ?  $request->file('quit_memo')->store('documents', 'public') : null,
+            'copie_attes' => $request->hasFile('copie_attes') ?  $request->file('copie_attes')->store('documents', 'public') : null,
+            'copie_dipl' => $request->hasFile('copie_dipl') ?  $request->file('copie_dipl')->store('documents', 'public') : null,
+            'copie_act' => $request->hasFile('copie_act') ?  $request->file('copie_act')->store('documents', 'public') : null,
+            'demande_diro' => $request->hasFile('demande_diro') ?  $request->file('demande_diro')->store('documents', 'public') : null,
+            'cert_perte' => $request->hasFile('cert_perte') ?  $request->file('cert_perte')->store('documents', 'public') : null,
+        ]);
 
-        if ($request->hasFile('cip')) {
-            $cip = $request->file('cip');
-            $filename = time().'_'.$cip->getClientOriginalName();
-            $cip->move(public_path('Demande/Photos/'), $filename);
-            $demande->cip = $filename;
-        }
+        $demande = Demande::create([
+            'code' => $otp,
+            'annee' => $request->input('annee_academique'),
+            'etudiant_id' => Auth::guard('etudiant')->user()->id,
+            'acte_id' => $request->acte_id,
+            'paiement_id' => $paiement->id,
+            'documents_id' => $document->id,
+        ]);
 
-        if ($request->hasFile('fiche_prederniere')) {
-            $fiche_prederniere = $request->file('fiche_prederniere');
-            $filename = time().'_'.$fiche_prederniere->getClientOriginalName();
-            $fiche_prederniere->move(public_path('Demande/Photos/'), $filename);
-            $demande->fiche_prederniere = $filename;
+        $demande->save();
+            
+        $acte_demande=$demande->acteAcademique->type_acte;
+        $code_demande = $demande->code;
+        Mail::to("{$demande->etudiant->email}")->send(new DemandeVerificationEmail($code_demande,$acte_demande));
+        $message = 'Demande soumise avec succès! Le code de votre demande est ' . $code_demande;
+
+        // Envoi d'une notification à l'utilisateur pour la nouvelle demande
+        $etudiantRelation = $demande->etudiant(); // Obtenez la relation BelongsTo
+        $etudiant = $etudiantRelation->first();
+
+        if ($etudiant) {
+            // Envoyez la notification à l'étudiant
+            $etudiant->notify(new DemandeNotifcation($demande));
+        } else {
+            // Gérez le cas où l'étudiant n'existe pas
         }
 
-        if ($request->hasFile('releve_sem1')) {
-            $releve_sem1 = $request->file('releve_sem1');
-            $filename = time().'_'.$releve_sem1->getClientOriginalName();
-            $releve_sem1->move(public_path('Demande/Photos/'), $filename);
-            $demande->releve_sem1 = $filename;
+        // Récupérer les notifications de l'utilisateur depuis la session
+        $notifications = collect(session('etudiant_notifications', []));
+
+        // Ajouter la nouvelle notification à la collection
+        $notifications->push(new DemandeNotifcation($demande));
+
+        // Mettre à jour la session avec les nouvelles notifications
+        session(['etudiant_notifications' => $notifications->toArray()]);
+
+        $administrateurs = User::all();
+
+        // Envoyer la notification à chaque administrateur
+        foreach ($administrateurs as $administrateur) {
+            $administrateur->notify(new DemandeApprouveeNotification($demande));
         }
 
-        if ($request->hasFile('releve_sem2')) {
-            $releve_sem2 = $request->file('releve_sem2');
-            $filename = time().'_'.$releve_sem2->getClientOriginalName();
-            $releve_sem2->move(public_path('Demande/Photos/'), $filename);
-            $demande->releve_sem2 = $filename;
-        }
-
-        if ($request->hasFile('releve_sem3')) {
-            $releve_sem3 = $request->file('releve_sem3');
-            $filename = time().'_'.$releve_sem3->getClientOriginalName();
-            $releve_sem3->move(public_path('Demande/Photos/'), $filename);
-            $demande->releve_sem3 = $filename;
-        }
-
-        if ($request->hasFile('releve_sem4')) {
-            $releve_sem4 = $request->file('releve_sem4');
-            $filename = time().'_'.$releve_sem4->getClientOriginalName();
-            $releve_sem4->move(public_path('Demande/Photos/'), $filename);
-            $demande->releve_sem4 = $filename;
-        }
-
-        if ($request->hasFile('releve_sem5')) {
-            $releve_sem5 = $request->file('releve_sem5');
-            $filename = time().'_'.$releve_sem5->getClientOriginalName();
-            $releve_sem5->move(public_path('Demande/Photos/'), $filename);
-            $demande->releve_sem5 = $filename;
-        }
-
-        if ($request->hasFile('releve_sem6')) {
-            $releve_sem6 = $request->file('releve_sem6');
-            $filename = time().'_'.$releve_sem6->getClientOriginalName();
-            $releve_sem6->move(public_path('Demande/Photos/'), $filename);
-            $demande->releve_sem6 = $filename;
-        }
-
-        if ($request->hasFile('quit_memo')) {
-            $quit_memo = $request->file('quit_memo');
-            $filename = time().'_'.$quit_memo->getClientOriginalName();
-            $quit_memo->move(public_path('Demande/Photos/'), $filename);
-            $demande->quit_memo = $filename;
-        }
-
-        if ($request->hasFile('copie_attes')) {
-            $copie_attes = $request->file('copie_attes');
-            $filename = time().'_'.$copie_attes->getClientOriginalName();
-            $copie_attes->move(public_path('Demande/Photos/'), $filename);
-            $demande->copie_attes = $filename;
-        }
-
-        if ($request->hasFile('copie_dipl')) {
-            $copie_dipl = $request->file('copie_dipl');
-            $filename = time().'_'.$copie_dipl->getClientOriginalName();
-            $copie_dipl->move(public_path('Demande/Photos/'), $filename);
-            $demande->copie_dipl = $filename;
-        }
-
-        if ($request->hasFile('copie_act')) {
-            $copie_act = $request->file('copie_act');
-            $filename = time().'_'.$copie_act->getClientOriginalName();
-            $copie_act->move(public_path('Demande/Photos/'), $filename);
-            $demande->copie_act = $filename;
-        }
-
-        if ($request->hasFile('demande_diro')) {
-            $demande_diro = $request->file('demande_diro');
-            $filename = time().'_'.$demande_diro->getClientOriginalName();
-            $demande_diro->move(public_path('Demande/Photos/'), $filename);
-            $demande->demande_diro = $filename;
-        }
-
-      
-        $otp = rand(100000, 999999);
-        $demande->otp = $otp;
-         // Envoi d'une notification à l'utilisateur pour la nouvelle demande
-       //  $etudiant = $demande->etudiant();
-        // $etudiant->notify(new DemandeNotifcation($demande));
-         // Envoi d'une notification à l'administrateur pour l'approbation de la demande
-        // $adminEmail = 'admin@example.com'; 
-//Notification::route('mail', $adminEmail)->notify(new DemandeApprouveeNotification($demande));
-    $demande->save();
-    dd($demande);
-
-    
-
-
+        return redirect()->route('student.')->with('success', $message);
     }
 
     /**
@@ -254,33 +173,5 @@ class ReleveController extends Controller
     {
         //
     }
-
-    
-    // ... Autres méthodes du contrôleur
-
-  public function verification()
-  {
-    
-  }
-
-  public function track(Request $request, $demande)
-  {
-    $demande = Demande::findOrFail($demande);
- // Vérification de l'OTP
- if ($request->otp == $demande->otp) {
-    // Récupération du statut de la demande
-    $statut = $demande->statut;
-
-    // Affichage des informations sur la demande
-    return view('student.Demande.verification', [
-        'demande' => $demande,
-        'statut' => $statut
-    ]);
-} else {
-    // Affichage d'un message d'erreur
-    return redirect()->back()->withErrors(['otp' => 'OTP invalide']);
-}
-
-  }
     
 }

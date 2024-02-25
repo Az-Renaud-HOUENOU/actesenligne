@@ -13,32 +13,20 @@ class DemandeVerificationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
-    public function __construct()
+    public $code_demande;
+    public $acte_demande;
+
+    public function __construct(string $code_demande, string $acte_demande)
     {
-        //
+        $this->code_demande = $code_demande;
+        $this->acte_demande = $acte_demande;
     }
 
-    /**
-     * Get the message envelope.
-     */
-    public function envelope(): Envelope
+    public function build()
     {
-        return new Envelope(
-            subject: 'Demande Verification Email',
-        );
-    }
-
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            markdown: 'mail.demande-verification-email',
-        );
+        return $this->from("contact@ifri.uac.bj") // L'expéditeur
+                    ->subject("Demande reçcu") // Le sujet
+                    ->view('emails.codedemande');
     }
 
     /**

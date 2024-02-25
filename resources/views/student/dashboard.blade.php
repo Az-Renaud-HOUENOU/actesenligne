@@ -3,6 +3,7 @@
 @section('title', 'Student Dashboard')
 
 @section('content')
+
 <div class="content-body">
     <!-- row -->
     <div class="container-fluid">
@@ -24,31 +25,32 @@
             <div class="col-xl-12 col-xxl-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Form step</h4>
+                        <h4 class="card-title">Sélectionner le type d'acte académique que vous voulez obtenir:</h4>
                     </div>
                     <div class="card-body">
-                        <p>Sélectionner le type d'acte académique que vous voulez obtenir:</p>
                         <div class="row">
-                            <div class="col-xl-6">
-                                <!--col-xl-4 col-lg-6 col-xxl-6 col-md-6 -->
+                            <div class="col-lg-6">
                                 <div class="basic-form">
-                                    <form id="typeActeForm">
-                                        <div class="form-group">
-                                            @foreach($actes as $acte)
+                                    <form id="typeActeForm" method="POST">
+                                        @foreach($actes as $acte)
+                                            <div class="form-group">
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="radio" name="optradio" id="acteselectionne">{{$acte->type_acte}}</label>
+                                                        <input type="radio" name="optradio" class="acteSelectionne" id="acteselectionne" value="{{ $acte->id }}" data-id="{{ $acte->id }}" data-description="{{$acte->description}}">
+                                                        {{$acte->type_acte}}
+                                                    </label>
                                                 </div>
-                                            @endforeach
-                                        </div>
+                                            </div>
+                                        @endforeach
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-xl-6">
-                                <div id="divDescription">
-
+                            <div class="col-lg-6">
+                                <div id="divDescription" style="display:none;">
+                                    <h4 id="titreActe"></h4><br>
+                                    <div id="descriptionActe"></div>
                                     <div class="d-flex text-end">
-                                        <button class="has-arrow" id="obtenirButton" style="display:none;"><a href="{{route('student.demande.index')}}">Obtenir</a></button>
+                                        <div id="btnacte"></div>
                                     </div>
                                 </div>
                             </div>
@@ -61,9 +63,44 @@
 </div>
 
 <script>
-    function afficherDiv(){
-        var div2=document.getElementById('divDescription');
-        div2.style.display='block';
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+        var acteRadios = document.querySelectorAll('.acteSelectionne');
+        var divDescription = document.getElementById('divDescription');
+        var descriptionActe = document.getElementById('descriptionActe');
+        var BtnActe = document.getElementById('btnacte');
+        
+        var obtenirButton = document.getElementById('obtenirButton');
+        var titreActe = document.getElementById('titreActe'); 
+
+        acteRadios.forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                var description = this.getAttribute('data-description');
+                let acte = this.getAttribute('data-id');
+                var titre = this.nextSibling.nodeValue.trim();
+                descriptionActe.innerHTML = description;
+                titreActe.innerHTML = titre;
+
+                var url = "{{ route('student.demande.index', '') }}/" + acte;
+
+                BtnActe.innerHTML = '<a href="' + url + '" class="btn btn-primary has-arrow">Obtenir</a>';
+                divDescription.style.display = 'block';
+                obtenirButton.style.display = 'block';
+
+            });
+        });
+    });
 </script>
+
+@if (session('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Succès!',
+                text: "{{ session('success') }}",
+            });
+        });
+    </script>
+@endif
+
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -23,7 +24,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.layouts.index');
+        $admin = Auth::user();
+        $notifications = $admin->unreadNotifications; 
+        
+        return view('admin.layouts.index', compact('notifications'));
     }
 
     public function showprofil()

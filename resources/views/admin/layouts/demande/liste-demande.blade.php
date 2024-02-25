@@ -20,17 +20,18 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Liste des actes académiques</h4>
+                <h4 class="card-title">Liste des demandes</h4>
 
                 <div class="d-flex text-end">
                                 <form>
                                     <div class="form-group">
                                         <label>Afficher</label>
                                         <select class="form-control" id="sel1">
-                                            <option selected>Toutes les demandes</option>
-                                            <option>Demandes en attente</option>
-                                            <option>Demandes traitées</option>
-                                            <option>Demandes rejetées</option>
+                                            <option value="toutes" selected>Toutes les demandes</option>
+                                            <option value="En attente">Demandes en attente</option>
+                                            <option value="En cours de traitement">Demandes en cours de traitement</option>
+                                            <option value="Traitée">Demandes traitées</option>
+                                            <option value="Rejetée">Demandes rejetées</option>
                                         </select>
                                     </div>
                                 </form>
@@ -43,6 +44,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Code de la demande</th>
                                 <th>Matricule de l'étudiant</th>
                                 <th>Acte demandé</th>
                                 <th>Statut de la demande</th>
@@ -53,33 +55,27 @@
                             @foreach($demandes as $demande)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$demande->matricule}}</td>
-                                    <td>{{$demande->acte_demande}}</td>
+                                    <td>{{$demande->code}}</td>
+                                    <td>{{$demande->etudiant->matricule}}</td>
+                                    <td>{{$demande->acteAcademique->type_acte}}</td>
                                     <td>
-                                        @if($demande->statut=='Traité')
+                                        @if($demande->statut=='Traitée')
                                             <span class="badge badge-success">{{$demande->statut}}</span>
                                         @elseif($demande->statut=='En cours de traitement')
                                             <span class="badge badge-warning">{{$demande->statut}}</span>
-                                        @elseif($demande->statut=='Rejeté')
+                                        @elseif($demande->statut=='Rejetée')
                                             <span class="badge badge-danger">{{$demande->statut}}</span>
                                         @else
                                             <span>{{$demande->statut}}</span>
                                         @endif
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-primary">
-                                            <a title="Voir" class="btn btn-info" href="{{route('demandes.details', $demande->id) }}">
-                                                <i class="bi bi-eye" style="color: #015291"></i>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-details-demande-{{$demande->id}}-lg">
+                                            <a title="Voir" class="btn btn-info" href="#">
+                                                <i class="fa-solid fa-eye" style="color: #015291"></i>
                                             </a>
                                         </button>
-
-                                        <form action="{{ route('actes.destroy', $acte->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet acte ?')">
-                                                <i id ="bttn" class="fa fa-trash" title="Supprimer"></i>
-                                            </button>
-                                        </form>
+                                        @include('admin.layouts.demande.details',["demande"=>$demande])
                                     </td>
                                 </tr>
                             @endforeach
@@ -87,6 +83,7 @@
                         <tfoot>
                             <tr>
                                 <th>#</th>
+                                <th>Code de la demande</th>
                                 <th>Matricule de l'étudiant</th>
                                 <th>Acte demandé</th>
                                 <th>Statut de la demande</th>
@@ -98,4 +95,25 @@
             </div>
         </div>
     </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var selectElement = document.getElementById('sel1');
+        var tableRows = document.querySelectorAll('#example tbody tr');
+
+        selectElement.addEventListener('change', function () {
+            var selectedValue = selectElement.value;
+
+            tableRows.forEach(function (row) {
+                var statutCell = row.querySelector('td:nth-child(5)');
+                var statut = statutCell.textContent.trim(); // Retirez les espaces blancs des deux côtés
+
+                if (selectedValue === 'toutes' || statut === selectedValue) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
 @endsection

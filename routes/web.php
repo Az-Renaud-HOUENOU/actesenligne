@@ -1,13 +1,14 @@
 <?php
 
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\Etudiant\SuvieController;
 use App\Http\Controllers\Etudiant\TrackController;
 use App\Http\Controllers\Etudiant\ProfilController;
-use App\Http\Controllers\Etudiant\ReleveController;
 use App\Http\Controllers\StudentDashboardController;
+use App\Http\Controllers\Etudiant\NotificationController;
 use App\Http\Controllers\Etudiant\VerificationController;
 
 /*
@@ -50,17 +51,31 @@ Route::middleware(['check.admin.super'])->prefix('admin')->group(function(){
     Route::get('utilisateurs/{etudiant}/edit', [App\Http\Controllers\Admin\ListeUtilisateurController::class, 'edit_etudiant'])->name('utilisateur.editetudiant');
 });
 Route::get('admin/demandes', [App\Http\Controllers\Admin\DemandeController::class, 'index'])->name('demandes');
-Route::get('admin/demande/{id}/recapitulatif', [App\Http\Controllers\Admin\DemandeController::class, 'show'])->name('demande.details');
-Route::get('admin/demande/{id}valider', [App\Http\Controllers\Admin\DemandeController::class, 'validateDemande'])->name('demande.validate');
-Route::get('admin/demande/{id}/rejeter', [App\Http\Controllers\Admin\DemandeController::class, 'rejectDemande'])->name('demande.reject');
-Route::get('admin/demande/traitees', [App\Http\Controllers\Admin\DemandeController::class, 'getDemandesTraitees'])->name('demandes.traitees');
-Route::get('admin/demande/rejetees', [App\Http\Controllers\Admin\DemandeController::class, 'getDemandesRejetees'])->name('demandes.rejetees');
+Route::put('admin/demande/{id}valider', [App\Http\Controllers\Admin\DemandeController::class, 'validateDemande'])->name('demande.validate');
+Route::put('admin/demande/{id}/rejeter', [App\Http\Controllers\Admin\DemandeController::class, 'rejectDemande'])->name('demande.reject');
 Route::get('admin/profil', [App\Http\Controllers\Admin\DashboardController::class, 'showprofil'])->name('admin.profil');
 
-Route::middleware(['check.etudiant.auth'])->prefix('student')->name('student.')->group(function(){
-    Route::get('dashboard', [StudentDashboardController::class, 'index']);
-    Route::resource('demande',ReleveController::class);
-    Route::resource('suivie',SuvieController::class);
+Route::middleware(['check.etudiant.auth'])->prefix('student')->group(function(){
+    Route::get('dashboard', [StudentDashboardController::class, 'index'])->name('student.');
+    
+    Route::get('demande/acte/{demande}', [App\Http\Controllers\Etudiant\ReleveController::class, 'index'])->name('student.demande.index');
+    Route::post('demande', [App\Http\Controllers\Etudiant\ReleveController::class, 'store'])->name('student.demande.store');
+    Route::get('demande/create', [App\Http\Controllers\Etudiant\ReleveController::class, 'create'])->name('student.demande.create');
+    Route::get('demande/{demande}', [App\Http\Controllers\Etudiant\ReleveController::class, 'show'])->name('student.demande.show');
+    Route::put('demande/{demande}', [App\Http\Controllers\Etudiant\ReleveController::class, 'update'])->name('student.demande.update');
+    Route::delete('demande/{demande}', [App\Http\Controllers\Etudiant\ReleveController::class, 'destroy'])->name('student.demande.destroy');
+    Route::get('demande/{demande}/edit', [App\Http\Controllers\Etudiant\ReleveController::class, 'edit'])->name('student.demande.edit');
+
+    Route::get('suivie', [App\Http\Controllers\Etudiant\SuvieController::class, 'index'])->name('student.suivie.index');
+    Route::post('suivie', [App\Http\Controllers\Etudiant\SuvieController::class, 'store'])->name('student.suivie.store');
+    Route::get('suivie/create', [App\Http\Controllers\Etudiant\SuvieController::class, 'create'])->name('student.suivie.create');
+    Route::get('suivie/{suivie}', [App\Http\Controllers\Etudiant\SuvieController::class, 'show'])->name('student.suivie.show');
+    Route::put('suivie/{suivie}', [App\Http\Controllers\Etudiant\SuvieController::class, 'update'])->name('student.suivie.update');
+    Route::delete('suivie/{suivie}', [App\Http\Controllers\Etudiant\SuvieController::class, 'destroy'])->name('student.suivie.destroy');
+    Route::get('suivie/{suivie}/edit', [App\Http\Controllers\Etudiant\SuvieController::class, 'edit'])->name('student.suivie.edit');
+    
+    Route::get('/notifications', [App\Http\Controllers\Etudiant\NotificationController::class, 'index'])->name('notifications.index');
+
  });
 
 Route::get('actes', [App\Http\Controllers\ActeController::class, 'index'])->name('actes.index');

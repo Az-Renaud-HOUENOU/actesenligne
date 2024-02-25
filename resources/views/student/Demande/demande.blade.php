@@ -20,7 +20,7 @@
                 </ol>
             </div>
         </div>
-       <p>Veuillez remplir en suivant rigourusement les regles donnees, le formulaire suivant pour votre demande Champ obligatoire *</p>
+       <p>Veuillez remplir en suivant rigourusement les regles donnees, le formulaire suivant pour votre demande.<br> Champ obligatoire <span style="color:red">*</span></p>
                 <!-- row -->
                 <div class="row">
                     <div class="col-xl-12 col-xxl-12">
@@ -29,10 +29,12 @@
                                 <h4 class="card-title">@yield('title')</h4>
                             </div>
                             <div class="card-body">
-                                <form action=" {{ route('student.demande.store') }}" method="GET" id="step-form-horizontal" class="step-form-horizontal" enctype="multipart/form-data">
+                                <form action=" {{ route('student.demande.store') }}" method="POST" enctype="multipart/form-data">
+                                   @csrf 
                                     <div>
+                                    <input type="hidden" name="acte_id" value="{{$demande}}">
                                         <h4>INFORMATIONS PERSONNELLES</h4>
-                                        <section>
+                                        <section id="info_perso">
                                             <div class="row">
                                                 <div class="col-lg-6 mb-4">
                                                     <div class="form-group">
@@ -105,40 +107,33 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 mb-4">
+                                                    @php
+                                                        // Année actuelle
+                                                        $annee_actuelle = date('Y');
+                                                        // Année de début
+                                                        $debut_annee = 2013;
+                                                        // Nombre d'années à générer
+                                                        $nombre_annees = $annee_actuelle - $debut_annee + 1;
+                                                    @endphp
                                                     <div class="form-group">
                                                         <label class="text-label">Année académique <span style="color:red">*</span></label>
-                                                        <select name="annee-academique" class="form-control" required>
+                                                        <select name="annee_academique" class="form-control" required>
                                                             <option selected>Sélectionner...</option>
-                                                            <option>2013 - 2014</option>
-                                                            <option>2014 - 2015</option>
-                                                            <option>2015 - 2016</option>
-                                                            <option>2016 - 2017</option>
-                                                            <option>2017 - 2018</option>
-                                                            <option>2018 - 2019</option>
-                                                            <option>2019 - 2020</option>
-                                                            <option>2020 - 2021</option>
-                                                            <option>2021 - 2022</option>
-                                                            <option>2022 - 2023</option>
-                                                            <option>2023 - 2024</option>
+                                                            @for ($i = 0; $i < $nombre_annees; $i++)
+                                                                @php
+                                                                    $annee_debut = $annee_actuelle - $i;
+                                                                    $annee_fin = $annee_actuelle - $i + 1;
+                                                                @endphp
+                                                                <option>{{ $annee_debut }} - {{ $annee_fin }}</option>
+                                                            @endfor
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                         </section>
                                         <h4>JOINDRE LES PIECES</h4>
-                                        <section>
+                                        <section id="piece">
                                             <div class="row">
-                                                <div class="col-lg-12 mb-4">
-                                                    <div class="form-group">
-                                                        <label class="text-label">Copie de la fiche de préinscription validée de l'année acdémique concernée <span style="color:red">*</span></label>
-                                                        <input type="file" name="fichepre_valid" class="form-control   @error('fichepre_valid') is-invalid  @enderror" placeholder="Votre Copie de la fiche de préinscription validée" >
-                                                        @error('fichepre_valid')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>  
-                                                        @enderror
-                                                    </div>
-                                                </div>
                                                 <div class="col-lg-12 mb-4">
                                                     <div class="form-group">
                                                         <label class="text-label">Copie simple de l'acte de naissance <span style="color:red">*</span></label>
@@ -161,143 +156,10 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 mb-4">
-                                                    <div class="form-group">
-                                                        <label class="text-label">Copie de la fiche de pré-inscription validée de la dernière année académique <span style="color:red">*</span></label>
-                                                        <input type="file" name="fiche_prederniere" class="form-control  @error('fiche_prederniere') is-invalid  @enderror" placeholder="Votre fiche de pré-inscription validée de la dernière année académique" >
-                                                        @error('fiche_prederniere')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>  
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 mb-4">
-                                                    <div class="form-group">
-                                                        <label class="text-label">Copie du relevé de notes du 1er semestre <span style="color:red">*</span></label>
-                                                        <input type="file" name="releve_sem1" class="form-control  @error('releve_sem1') is-invalid  @enderror" placeholder="Votre relevé de notes du 1er semestre" >
-                                                        @error('releve_sem1')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>  
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 mb-4">
-                                                    <div class="form-group">
-                                                        <label class="text-label">Copie du relevé de notes du 2è semestre <span style="color:red">*</span></label>
-                                                        <input type="file" name="releve_sem2" class="form-control  @error('releve_sem2') is-invalid  @enderror" placeholder="Votre relevé de notes du 2è semestre" >
-                                                        @error('releve_sem2')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>  
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 mb-4">
-                                                    <div class="form-group">
-                                                        <label class="text-label">Copie du relevé de notes du 3è semestre <span style="color:red">*</span></label>
-                                                        <input type="file" name="releve_sem3" class="form-control  @error('releve_sem3') is-invalid  @enderror" placeholder="Votre relevé de notes du 3è semestre" >
-                                                        @error('releve_sem3')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>  
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 mb-4">
-                                                    <div class="form-group">
-                                                        <label class="text-label">Copie du relevé de notes du 4è semestre <span style="color:red">*</span></label>
-                                                        <input type="file" name="releve_sem4" class="form-control  @error('releve_sem4') is-invalid  @enderror" placeholder="Votre relevé de notes du 4è semestre" >
-                                                        @error('releve_sem4')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>  
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 mb-4">
-                                                    <div class="form-group">
-                                                        <label class="text-label">Copie du relevé de notes du 5è semestre <span style="color:red">*</span></label>
-                                                        <input type="file" name="releve_sem5" class="form-control  @error('releve_sem5') is-invalid  @enderror" placeholder="Votre relevé de notes du 5è semestre" >
-                                                        @error('releve_sem5')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>  
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 mb-4">
-                                                    <div class="form-group">
-                                                        <label class="text-label">Copie du relevé de notes du 6è semestre <span style="color:red">*</span></label>
-                                                        <input type="file" name="releve_sem6" class="form-control  @error('releve_sem6') is-invalid  @enderror" placeholder="Votre relevé de notes du 6è semestre" >
-                                                        @error('releve_sem6')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>  
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 mb-4">
-                                                    <div class="form-group">
-                                                        <label class="text-label"> Original du quitus de dépôt du mémoire corrigé après la soutenance <span style="color:red">*</span></label>
-                                                        <input type="file" name="quit_memo" class="form-control  @error('quit_memo') is-invalid  @enderror" placeholder="Votre Quitus de dépôt du mémoire corrigé après la soutenance" >
-                                                        @error('quit_memo')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>  
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 mb-4">
-                                                    <div class="form-group">
-                                                        <label class="text-label">Copie de l'attestation de diplôme <span style="color:red">*</span></label>
-                                                        <input type="file" name="copie_attes" class="form-control  @error('copie_attes') is-invalid  @enderror" placeholder="Votre attestation de diplôme" >
-                                                        @error('copie_attes')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>  
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 mb-4">
-                                                    <div class="form-group">
-                                                        <label class="text-label">Copie du diplôme <span style="color:red">*</span></label>
-                                                        <input type="file" name="copie_dipl" class="form-control  @error('copie_dipl') is-invalid  @enderror" placeholder="Votre diplôme" >
-                                                        @error('copie_dipl')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>  
-                                                        @enderror
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-12 mb-4">
-                                                    <div class="form-group">
-                                                        <label class="text-label">Demande adressée au Directeur de l'IFRI <span style="color:red">*</span></label>
-                                                        <input type="file" name="demande_diro" class="form-control  @error('demande_diro') is-invalid  @enderror" placeholder="Une demande adressée au directeur de l'IFRI" >
-                                                        @error('demande_diro')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>  
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 mb-4">
-                                                    <div class="form-group">
-                                                        <label class="text-label ">Copie de l'acte ou des actes à certifier <span style="color:red">*</span></label>
-                                                        <input type="file" name="copie_act" class="form-control   @error('copie_act') is-invalid  @enderror " placeholder="L'acte ou les actes à certifier" multiple>
-                                                        @error('copie_act')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>  
-                                                        @enderror
-                                                    </div>
-                                                </div>
                                             </div>
                                         </section>
                                         <h4>INFORMATIONS SUR LE PAIEMENT</h4>
-                                        <section>
+                                        <section id="paye">
                                             <div class="row">
                                                 <div class="col-lg-6 mb-4">
                                                     <div class="form-group">
@@ -312,6 +174,17 @@
                                                 </div>
                                                 <div class="col-lg-6 mb-4">
                                                     <div class="form-group">
+                                                        <label class="text-label">Entrer le montant payé <span style="color:red">*</span></label>
+                                                        <input type="number" name="montant_paye" class="form-control  @error('montant_paye') is-invalid  @enderror" placeholder="Le montant payé pour la demande de l'acte" >
+                                                        @error('montant_paye')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>  
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 mb-4">
+                                                    <div class="form-group">
                                                         <label class="text-label">Preuve de paiement (Quittance) <span style="color:red">*</span></label>
                                                         <input type="file" name="preuve" class="form-control @error('preuve') is-invalid  @enderror" placeholder="Numero de paiements" >
                                                         @error('preuve')
@@ -323,56 +196,7 @@
                                                 </div>
                                             </div>
                                         </section>
-                                        <h4>Email Setup</h4>
-                                        <section>
-                                            <div class="row emial-setup">
-                                                <div class="col-sm-3 col-6">
-                                                    <div class="form-group">
-                                                        <label for="mailclient11" class="mailclinet mailclinet-gmail">
-                                                            <input type="radio" name="emailclient" id="mailclient11">
-                                                            <span class="mail-icon">
-                                                                <i class="mdi mdi-google-plus" aria-hidden="true"></i>
-                                                            </span>
-                                                            <span class="mail-text">I'm using Gmail</span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3 col-6">
-                                                    <div class="form-group">
-                                                        <label for="mailclient12" class="mailclinet mailclinet-office">
-                                                            <input type="radio" name="emailclient" id="mailclient12">
-                                                            <span class="mail-icon">
-                                                                <i class="mdi mdi-office" aria-hidden="true"></i>
-                                                            </span>
-                                                            <span class="mail-text">I'm using Office</span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3 col-6">
-                                                    <div class="form-group">
-                                                        <label for="mailclient13" class="mailclinet mailclinet-drive">
-                                                            <input type="radio" name="emailclient" id="mailclient13">
-                                                            <span class="mail-icon">
-                                                                <i class="mdi mdi-google-drive" aria-hidden="true"></i>
-                                                            </span>
-                                                            <span class="mail-text">I'm using Drive</span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3 col-6">
-                                                    <div class="form-group">
-                                                        <label for="mailclient14" class="mailclinet mailclinet-another">
-                                                            <input type="radio" name="emailclient" id="mailclient14">
-                                                            <span class="mail-icon">
-                                                                <i class="fa fa-question-circle-o"
-                                                                    aria-hidden="true"></i>
-                                                            </span>
-                                                            <span class="mail-text">Another Service</span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </section>
+                                        <button type="submit" class="btn btn-primary">Soumettre</button>
                                     </div>
                                 </form>
                             </div>

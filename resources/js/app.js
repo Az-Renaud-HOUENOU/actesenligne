@@ -36,4 +36,7 @@ app.component('example-component', ExampleComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
+import Swal from 'sweetalert2';
+window.Swal = Swal;
+
 app.mount('#app');

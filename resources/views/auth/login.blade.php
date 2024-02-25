@@ -5,7 +5,7 @@
                                         <img src="{{asset('images/logoifri.jpg')}}" width="400px"height="200px" alt="">
                                     </div> 
                                     <i class='uil uil-user text-secondary fs-5'></i>  <i class='uil uil-lock text-secondary fs-5'></i>-->
-                                    <h4 class="text-center mb-4">{{ __('Sign in your account') }}</h4>
+                                    <h4 class="text-center mb-4">{{ __('Connectez-vous à votre compte') }}</h4>
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="form-group">
@@ -46,6 +46,6 @@
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
-                                        <p>Don't have an account? <a class="text-primary" href="{{ route('register') }}">Sign up</a></p>
+                                        <p>Vous n'avez pas de compte ? <a class="text-primary" href="{{ route('register') }}">S'inscrire</a></p>
                                     </div>
 @endsection
