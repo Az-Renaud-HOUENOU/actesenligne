@@ -23,12 +23,13 @@ class DemandeRequest extends FormRequest
     {
         return [
             //
-            "nom" => ['required', 'min:3'],
-            "prenom" => ['required', 'min:3'],
-            "matricule" => ["required",'numeric'],
-            "option" => ['required', 'min:3'],
-            "email" => ["required", 'email'],
-            "numero" => ["required", 'required', 'min:3'],
+            "nom" => ['min:3'],
+            "prenom" => ['min:3'],
+            "matricule" => ['numeric'],
+            "option" => ['min:3'],
+            "email" => ['email'],
+            "numero" => ['min:3'],
+            "annee_academique" => ['required'],
             "fichepre_valid" => ['required', 'extensions:pdf'],
             "acte_nais" => ['required', 'extensions:pdf'],
             "cip" => ['required', 'extensions:pdf'],
@@ -44,7 +45,9 @@ class DemandeRequest extends FormRequest
             "copie_dipl" => ['required', 'extensions:pdf'],
             "demande_diro" => ['required', 'extensions:pdf'],
             "copie_act" => ['required', 'extensions:pdf'],
+            "cert_perte" => ['required', 'extensions:pdf'],
             "pay_num" => ['required', 'numeric'],
+            "montant_paye" => ['required', 'numeric'],
             "preuve" => ['required', 'extensions:pdf'],
         ];
     }

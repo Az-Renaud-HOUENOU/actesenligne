@@ -36,12 +36,12 @@ class ReleveController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($demande)
+    public function index($demande, $nomacte)
     {
         $etudiant=Auth::guard('etudiant')->user();
         $notifications = collect(session('etudiant_notifications', []));
-        
-        return view('student.Demande.demande', compact('etudiant','demande','notifications'));
+
+        return view('student.Demande.demande', compact('etudiant','demande','notifications', 'nomacte'));
     }
 
     /**
@@ -50,13 +50,13 @@ class ReleveController extends Controller
     public function create()
     {
         //
-       
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(DemandeRequest $request)
     {
         $otp = CodeHelpers::generateOTP();
 
@@ -65,7 +65,7 @@ class ReleveController extends Controller
             'preuve' => $request->hasFile('preuve') ?  $request->file('preuve')->store('documents', 'public') : null,
             'montant_paye' => $request->montant_paye,
         ]);
-        
+
         $document = DocumentsDemande::create([
             'acte_nais' => $request->hasFile('acte_nais') ?  $request->file('acte_nais')->store('documents', 'public') : null,
             'cip' => $request->hasFile('cip') ?  $request->file('cip')->store('documents', 'public') : null,
@@ -95,11 +95,11 @@ class ReleveController extends Controller
         ]);
 
         $demande->save();
-            
+
         $acte_demande=$demande->acteAcademique->type_acte;
         $code_demande = $demande->code;
-        Mail::to("{$demande->etudiant->email}")->send(new DemandeVerificationEmail($code_demande,$acte_demande));
-        $message = 'Demande soumise avec succès! Le code de votre demande est ' . $code_demande;
+        Mail::to($demande->etudiant->email)->send(new DemandeVerificationEmail($code_demande,$acte_demande));
+        session()->flash('success', "Demande soumise avec succès! Le code de votre demande est: $code_demande");
 
         // Envoi d'une notification à l'utilisateur pour la nouvelle demande
         $etudiantRelation = $demande->etudiant(); // Obtenez la relation BelongsTo
@@ -128,7 +128,7 @@ class ReleveController extends Controller
             $administrateur->notify(new DemandeApprouveeNotification($demande));
         }
 
-        return redirect()->route('student.')->with('success', $message);
+        return to_route('student.');
     }
 
     /**
@@ -141,14 +141,14 @@ class ReleveController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     */ 
+     */
 
 
      /**
      * verificaton the specified resource.
      */
-    
-    
+
+
          /**
      * Mise à jour de la route de validation
      */
@@ -173,5 +173,5 @@ class ReleveController extends Controller
     {
         //
     }
-    
+
 }

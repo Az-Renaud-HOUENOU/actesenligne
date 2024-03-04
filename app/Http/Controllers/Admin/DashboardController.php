@@ -32,7 +32,10 @@ class DashboardController extends Controller
 
     public function showprofil()
     {
-        return view('admin.layouts.profil');
+        $admin = Auth::user();
+        $notifications = $admin->unreadNotifications;
+         
+        return view('admin.layouts.profil', compact('notifications'));
     }
     /**
      * Show the form for creating a new resource.

@@ -9,7 +9,6 @@
                     <li><a href="{{route('actes.index')}}" aria-expanded="false"><i
                                 class="icon icon-app-store"></i><span class="nav-text">Acte académique</span></a>
                     </li>
-
                     <li><a href="{{route('demandes')}}" aria-expanded="false"><i
                                 class="icon icon-single-copy-06"></i><span class="nav-text">Demandes</span></a>
                     </li>
@@ -17,7 +16,7 @@
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-chart-bar-33"></i><span class="nav-text">Statistiques</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="#">Statistiques</a></li>
+                            <li><a href="{{ route('statistique.demande') }}">Statistiques</a></li>
                             <li><a href="#">Exporter pdf</a></li>
                         </ul>
                     </li>
@@ -25,8 +24,8 @@
                         <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                     class="icon icon-single-04"></i><span class="nav-text">Utilisateurs</span></a>
                             <ul aria-expanded="false">
-                                <li><a href="{{route('utilisateur.index')}}">Utilisateurs</a></li>
-                                <li><a href="#">Rôles</a></li>
+                                <li><a href="{{route('users.index')}}">Utilisateurs</a></li>
+                                <li><a href="{{route('roles.index')}}">Rôles</a></li>
                                 <li><a href="#">Permissions</a></li>
                             </ul>
                         </li>

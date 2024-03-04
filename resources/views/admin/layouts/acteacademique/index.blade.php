@@ -13,13 +13,13 @@
 <div class="row page-titles mx-0">
     <div class="col-sm-6 p-md-0">
         <div class="welcome-text">
-            <h4>Hi, welcome back!</h4>
-            <p class="mb-0">Your business dashboard template</p>
+            <h4>Bienvenu(e)!</h4>
+            <p class="mb-0">Votre plateforme de demande d'acte académique</p>
         </div>
     </div>
     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">App</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">ActesEnLigne</a></li>
             <li class="breadcrumb-item active"><a href="javascript:void(0)">Actes</a></li>
         </ol>
     </div>
@@ -56,7 +56,7 @@
                                         <div class="row">
                                             <span>
                                                 <a title="Modifier" class="btn btn-warning" data-toggle="modal" data-target="#basicModal-edit-acte-academique-{{$acte->id}}">
-                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                    <i class="fa fa-pen font-18 align-middle mr-2e"></i>
                                                 </a>
                                             </span>
                                             @include('admin.layouts.acteacademique.edit-acte',["acte"=>$acte])
@@ -65,7 +65,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button title="Supprimer" type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet acte ?')">
-                                                    <span><i class="fa fa-trash-can"></i></span>
+                                                    <span><i class="fa fa-trash font-18 align-middle mr-2"></i></span>
                                                 </button>
                                             </form>
                                         </div>

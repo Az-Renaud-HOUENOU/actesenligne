@@ -36,7 +36,7 @@
                                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                         </div>
                                         <div class="text-center mt-4">
-                                            <button type="submit" class="btn btn-primary btn-block">{{ __('Sinscrire') }}</button>
+                                            <button type="submit" class="btn btn-primary btn-block">{{ __('S\'inscrire') }}</button>
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">

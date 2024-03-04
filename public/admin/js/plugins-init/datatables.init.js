@@ -46,9 +46,9 @@ let dataSet = [
     var table = $('#example').DataTable({
         createdRow: function ( row, data, index ) {
            $(row).addClass('selected')
-        } 
+        }
     });
-      
+
     table.on('click', 'tbody tr', function() {
     var $row = table.row(this).nodes().to$();
     var hasClass = $row.hasClass('selected');
@@ -58,7 +58,7 @@ let dataSet = [
         $row.addClass('selected')
     }
     })
-    
+
     table.rows().every(function() {
     this.nodes().to$().removeClass('selected')
     });
@@ -85,20 +85,20 @@ let dataSet = [
             $row.addClass('selected')
         }
     })
-        
+
     table2.rows().every(function() {
         this.nodes().to$().removeClass('selected')
     });
-   
+
 
 
     //tableEtudiant
     var tableEtudiant = $('#tableEtudiant').DataTable({
         createdRow: function ( row, data, index ) {
             $(row).addClass('selected')
-        } 
+        }
     });
-    
+
     tableEtudiant.on('click', 'tbody tr', function() {
     var $row = tableEtudiant.row(this).nodes().to$();
     var hasClass = $row.hasClass('selected');
@@ -108,7 +108,7 @@ let dataSet = [
         $row.addClass('selected')
     }
     })
-    
+
     tableEtudiant.rows().every(function() {
     this.nodes().to$().removeClass('selected')
     });
@@ -135,8 +135,34 @@ let dataSet = [
             $row.addClass('selected')
         }
     })
-        
+
     tableAdmin.rows().every(function() {
+        this.nodes().to$().removeClass('selected')
+    });
+
+
+    //tableroles
+    var tableroles = $('#tableroles').DataTable( {
+        createdRow: function ( row, data, index ) {
+            $(row).addClass('selected')
+        },
+
+        "scrollY":        "42vh",
+        "scrollCollapse": true,
+        "paging":         false
+    });
+
+    tableroles.on('click', 'tbody tr', function() {
+        var $row = tableroles.row(this).nodes().to$();
+        var hasClass = $row.hasClass('selected');
+        if (hasClass) {
+            $row.removeClass('selected')
+        } else {
+            $row.addClass('selected')
+        }
+    })
+
+    tableroles.rows().every(function() {
         this.nodes().to$().removeClass('selected')
     });
 })(jQuery);

@@ -8,7 +8,7 @@
     <title>  @yield('title') Dashboard Etudiant</title>
 
     <meta name="description" content="Le site officiel de L'Institut de Formation et de Recherche en Informatique de L'UAC">
-    
+
     <meta name="keywords" content="IFRI, UAC, Informatique, Bénin, Recherche, Institut, Ecole, Ingenierie, Université, Sécurité Informatique, Génie Logiciel, Internet et Multimédia, Système d'Information et rédeaux Informatiques, Ordinateur, Programmation, LRSIA, WICSI, IFRI ALUMNI">
     <meta name="author" content="Institut de Formation et de Recherche en Informatique" >
     <meta name="robots" content="noodp"/>
@@ -27,18 +27,19 @@
     <link rel="icon" type="image/x-icon" href="{{asset('images/logoifri.jpg')}}">
 
     <!--==================== UNICONS ====================-->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">        
-        
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
     <!--================= CSS BOOTSTRAP ===============-->
     <link rel="stylesheet" href=" {{ asset('student/vendor/jqvmap/css/jqvmap.min.css') }} ">
 	<link rel="stylesheet" href=" {{ asset('student/vendor/chartist/css/chartist.min.css') }} ">
-	<!-- Summernote -->
-    <link href=" {{ asset('student/vendor/summernote/summernote.css') }}" rel="stylesheet">
+
 	<link rel="stylesheet" href=" {{ asset('student/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }} ">
     <link rel="stylesheet" href="{{ asset('student/css/style.css') }}">
     <link rel="stylesheet" href=" {{ asset('student/css/skin-3.css') }} ">
-    <!-- Form step -->
-    <link href="{{asset('admin/vendor/jquery-steps/css/jquery.steps.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('student/css/styleperso.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-   
+

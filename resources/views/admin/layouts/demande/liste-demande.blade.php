@@ -4,13 +4,13 @@
 <div class="row page-titles mx-0">
     <div class="col-sm-6 p-md-0">
         <div class="welcome-text">
-            <h4>Hi, welcome back!</h4>
-            <p class="mb-0">Your business dashboard template</p>
+            <h4>Bienvenu(e)!</h4>
+            <p class="mb-0">Votre plateforme de demande d'acte académique</p>
         </div>
     </div>
     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">App</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">ActesEnLigne</a></li>
             <li class="breadcrumb-item active"><a href="javascript:void(0)">Demandes</a></li>
         </ol>
     </div>
@@ -47,6 +47,7 @@
                                 <th>Code de la demande</th>
                                 <th>Matricule de l'étudiant</th>
                                 <th>Acte demandé</th>
+                                <th>Date de la demande</th>
                                 <th>Statut de la demande</th>
                                 <th>Actions</th>
                             </tr>
@@ -58,6 +59,7 @@
                                     <td>{{$demande->code}}</td>
                                     <td>{{$demande->etudiant->matricule}}</td>
                                     <td>{{$demande->acteAcademique->type_acte}}</td>
+                                    <td>{{ $demande->created_at->format('d/m/Y') }}</td>
                                     <td>
                                         @if($demande->statut=='Traitée')
                                             <span class="badge badge-success">{{$demande->statut}}</span>
@@ -72,7 +74,7 @@
                                     <td>
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-details-demande-{{$demande->id}}-lg">
                                             <a title="Voir" class="btn btn-info" href="#">
-                                                <i class="fa-solid fa-eye" style="color: #015291"></i>
+                                                <i class="fa fa-eye font-18 align-middle mr-2" style="color: #015291"></i>
                                             </a>
                                         </button>
                                         @include('admin.layouts.demande.details',["demande"=>$demande])
@@ -86,6 +88,7 @@
                                 <th>Code de la demande</th>
                                 <th>Matricule de l'étudiant</th>
                                 <th>Acte demandé</th>
+                                <th>Date de la demande</th>
                                 <th>Statut de la demande</th>
                                 <th>Actions</th>
                             </tr>
@@ -116,4 +119,17 @@
         });
     });
 </script>
+
+@if (session('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Succès!',
+                text: "{{ session('success') }}",
+            });
+        });
+    </script>
+@endif
+
 @endsection

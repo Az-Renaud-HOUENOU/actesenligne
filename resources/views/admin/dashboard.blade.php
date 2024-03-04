@@ -6,7 +6,7 @@
 </head>
 
 <body>
-
+    <script src="{{asset('js/tinymce.js')}}" type="text/javascript"></script>
     <!--*******************
         Preloader start
     ********************-->
@@ -91,6 +91,7 @@
     ***********************************-->
       @include('admin.partials.foot')
 
+      @include('sweetalert::alert')
 </body>
 
 </html>

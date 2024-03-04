@@ -32,7 +32,3 @@
 <!-- Datatable -->
 <script src="{{asset('admin/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('admin/js/plugins-init/datatables.init.js')}}"></script>
-
-<script src="{{asset('admin/js/plugins-init/editor-tinymce-init.js')}}"></script>
-<script src="{{asset('admin/vendor/tinymce/tinymce.min.js')}}"></script>
-<script src="{{asset('js/tinymce.js')}}" type="text/javascript"></script>

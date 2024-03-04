@@ -29,15 +29,8 @@ class DemandeApprouveeNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail'];
-    }
+        return ['database'];
 
-    public function toMail($notifiable)
-    {
-        return (new \Illuminate\Notifications\Messages\MailMessage)
-                    ->subject('Sujet de l\'email')
-                    ->greeting('Bonjour!')
-                    ->line('Votre demande a été approuvée.');
     }
 
     /**

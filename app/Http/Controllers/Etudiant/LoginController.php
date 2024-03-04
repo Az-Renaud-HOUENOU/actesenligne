@@ -53,6 +53,6 @@ class LoginController extends Controller
 
     public function doLogout(){
         Auth::guard('etudiant')->logout();
-        return to_route('etudiant.login');
+        return to_route('accueil');
     }
 }

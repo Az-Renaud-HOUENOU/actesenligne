@@ -36,7 +36,7 @@ class SuvieController extends Controller
 
         $otp = $request->otp;
         $demande = Demande::where('code', $otp)->first();
-        
+
         if ($demande) {
             // Afficher une SweetAlert avec le statut de la demande
             session()->flash('success', "Statut de votre demande: $demande->statut");

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FASHS-UAC</title>
+    <title>ActesEnLigne IFRI-UAC</title>
 </head>
 
 <body>
@@ -20,11 +20,11 @@
                         <p>Mr/Mme, votre demande de {{$acte_demande}} a été
                             reçue et bien enregistrée sous le code de demande <u><b>{{ $code_demande }}.</b></u>
                         </p>
-                        <p>Suivez, désormais votre demande sur ActesEnLigne avec votre code de demande.</p>
+                        <p>Suivez désormais votre demande sur ActesEnLigne avec votre code de demande.</p>
 
                         <div class="mt-2 mb-2">
                             <p>
-                                <i>Cordiallement, 
+                                <i>Cordiallement,
                                    Institut de Formation et de Recherche en Informatique de l'Université d'Abomey-Calavi
                                 </i>
                             </p>

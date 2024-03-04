@@ -4,11 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Demande;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DemandeRejeterMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DemandeController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:demande-list|demande-delete|demande-validate|demande-reject|demande-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:demande-validate', ['only' => ['validateDemande']]);
+         $this->middleware('permission:demande-reject', ['only' => ['rejectDemande']]);
+         $this->middleware('permission:demande-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -79,10 +89,24 @@ class DemandeController extends Controller
         return redirect()->back();
     }
 
-    public function rejectDemande($id){
+    public function rejectDemande($id, Request $request){
+        $request->validate([
+            'motif_rejet' => 'required|string|max:500'
+        ]);
         $demande=Demande::find($id);
         $demande->statut='Rejetée';
         $demande->save();
+
+        $data = [
+            'code_demande' => $demande->code,
+            'nom' => $demande->etudiant->nom,
+            'prenoms' => $demande->etudiant->prenom,
+            'actedemande' => $demande->acteAcademique->type_acte,
+            'motif_rejet' => $request->motif_rejet
+        ];
+        Mail::to($demande->etudiant->email)->send(new DemandeRejeterMail($data));
+
+        Alert::success('Succès!','La réponse à la demande a été bien envoyé à l\'étudiant');
 
         return redirect()->back();
     }

@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('reponse_demandes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('demande_id');
+            $table->foreign('demande_id')->references('id')->on('demandes')->onDelete('cascade');
+            $table->string('fichier_acte');
             $table->timestamps();
         });
     }

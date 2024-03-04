@@ -33,8 +33,15 @@ class StudentDashboardController extends Controller
     }
 
     public function profil () {
+        $notifications = collect(session('etudiant_notifications', []))->map(function ($notification) {
+            return [
+                'type_acte_demande' => $notification->demande->acteAcademique->type_acte,
+                'heure_demande' => $notification->heure_demande,
+            ];
+        });
         $etudiant=Auth::guard('etudiant')->user();
-        return view('student.profil', compact('etudiant'));
+
+        return view('student.profil', compact('etudiant','notifications'));
     }
 
 }

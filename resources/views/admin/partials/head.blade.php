@@ -13,4 +13,9 @@
 
 <!-- Custom Stylesheet -->
 <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
+
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<script src="https://cdn.tiny.cloud/1/w4x81blp4di4iswxv4q69ijz8nnepfl81eq0ycy7iyzwupmj/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

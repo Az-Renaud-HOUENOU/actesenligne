@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Etudiant;
 use App\Models\Paiement;
 use App\Models\ActeAcademique;
+use App\Models\ReponseDemande;
 use App\Models\DocumentsDemande;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -53,5 +54,11 @@ class Demande extends Model
     public function documentDemande()
     {
         return $this->belongsTo(DocumentsDemande::class, 'documents_id');
+    }
+
+    // Relation : une demande a une réponse
+    public function reponseDemande()
+    {
+        return $this->hasOne(ReponseDemande::class);
     }
 }

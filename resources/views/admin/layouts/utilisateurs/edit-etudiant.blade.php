@@ -57,7 +57,13 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Mot de Passe</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control" name="password_etudiant" placeholder="Mot de passe de l'étudiant" value="{{ $etudiant->password }}">
+                                <input type="password" class="form-control" name="password_etudiant" placeholder="Mot de passe de l'étudiant">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Confirmer le Mot de Passe</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="password_etudiant" placeholder="Mot de passe de l'étudiant">
                             </div>
                         </div>
                     </div>

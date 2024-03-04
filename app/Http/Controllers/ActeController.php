@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ActeAcademique;
 use Illuminate\Http\Request;
+use App\Models\ActeAcademique;
+use Illuminate\Support\Facades\Auth;
 
 class ActeController extends Controller
 {
@@ -24,7 +25,10 @@ class ActeController extends Controller
     public function index()
     {
         $actes=ActeAcademique::latest()->get();
-        return view('admin.layouts.acteacademique.index', compact('actes'));
+        $admin = Auth::user();
+        $notifications = $admin->unreadNotifications;
+        
+        return view('admin.layouts.acteacademique.index', compact('actes','notifications'));
     }
 
     /**

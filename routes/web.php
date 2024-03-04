@@ -3,13 +3,16 @@
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\Admin\ReponseController;
 use App\Http\Controllers\Etudiant\TrackController;
 use App\Http\Controllers\Etudiant\ProfilController;
 use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\Etudiant\NotificationController;
 use App\Http\Controllers\Etudiant\VerificationController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,16 +52,20 @@ Route::middleware(['check.admin.super'])->prefix('admin')->group(function(){
     Route::delete('utilisateurs/{etudiant}', [App\Http\Controllers\Admin\ListeUtilisateurController::class, 'destroy_etudiant'])->name('utilisateur.supetudiant');
     Route::get('utilisateurs/{admin}/edit', [App\Http\Controllers\Admin\ListeUtilisateurController::class, 'edit_admin'])->name('utilisateur.editadmin');
     Route::get('utilisateurs/{etudiant}/edit', [App\Http\Controllers\Admin\ListeUtilisateurController::class, 'edit_etudiant'])->name('utilisateur.editetudiant');
+
+    Route::get('statistiques', [App\Http\Controllers\Admin\StatistiqueController::class, 'index'])->name('statistique.demande');
 });
 Route::get('admin/demandes', [App\Http\Controllers\Admin\DemandeController::class, 'index'])->name('demandes');
 Route::put('admin/demande/{id}valider', [App\Http\Controllers\Admin\DemandeController::class, 'validateDemande'])->name('demande.validate');
 Route::put('admin/demande/{id}/rejeter', [App\Http\Controllers\Admin\DemandeController::class, 'rejectDemande'])->name('demande.reject');
 Route::get('admin/profil', [App\Http\Controllers\Admin\DashboardController::class, 'showprofil'])->name('admin.profil');
+Route::post('admin/repondre/{demande}', [ReponseController::class, 'store'])->name('reponses');
+
 
 Route::middleware(['check.etudiant.auth'])->prefix('student')->group(function(){
     Route::get('dashboard', [StudentDashboardController::class, 'index'])->name('student.');
-    
-    Route::get('demande/acte/{demande}', [App\Http\Controllers\Etudiant\ReleveController::class, 'index'])->name('student.demande.index');
+
+    Route::get('demande/acte/{demande}/{nomacte}', [App\Http\Controllers\Etudiant\ReleveController::class, 'index'])->name('student.demande.index');
     Route::post('demande', [App\Http\Controllers\Etudiant\ReleveController::class, 'store'])->name('student.demande.store');
     Route::get('demande/create', [App\Http\Controllers\Etudiant\ReleveController::class, 'create'])->name('student.demande.create');
     Route::get('demande/{demande}', [App\Http\Controllers\Etudiant\ReleveController::class, 'show'])->name('student.demande.show');
@@ -73,7 +80,7 @@ Route::middleware(['check.etudiant.auth'])->prefix('student')->group(function(){
     Route::put('suivie/{suivie}', [App\Http\Controllers\Etudiant\SuvieController::class, 'update'])->name('student.suivie.update');
     Route::delete('suivie/{suivie}', [App\Http\Controllers\Etudiant\SuvieController::class, 'destroy'])->name('student.suivie.destroy');
     Route::get('suivie/{suivie}/edit', [App\Http\Controllers\Etudiant\SuvieController::class, 'edit'])->name('student.suivie.edit');
-    
+
     Route::get('/notifications', [App\Http\Controllers\Etudiant\NotificationController::class, 'index'])->name('notifications.index');
 
  });
@@ -85,3 +92,8 @@ Route::get('actes/{acte}', [App\Http\Controllers\ActeController::class, 'show'])
 Route::put('actes/{acte}', [App\Http\Controllers\ActeController::class, 'update'])->name('actes.update');
 Route::delete('actes/{acte}', [App\Http\Controllers\ActeController::class, 'destroy'])->name('actes.destroy');
 Route::get('actes/{acte}/edit', [App\Http\Controllers\ActeController::class, 'edit'])->name('actes.edit');
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+});
