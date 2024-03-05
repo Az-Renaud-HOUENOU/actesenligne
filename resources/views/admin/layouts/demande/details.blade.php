@@ -9,7 +9,6 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-
                     <h3 class="text-center mt-4">GENERAL</h3>
                     <div class="container mt-4">
                         <div class="row" style="font-size: large;">
@@ -103,7 +102,7 @@
                             <div class="row mt-2" style="font-size: large;">
                                 <div class="col-12">
                                     <div class="">Acte de naissance:</div>
-                                    <embed src="{{ asset('storage/documents/' . $demande->documentDemande->acte_nais) }}" width="700" height="400"
+                                    <embed src="{{ asset('storage/' . $demande->documentDemande->acte_nais) }}" width="700" height="400"
                                         type="application/pdf">
                                 </div>
                             </div>
@@ -112,7 +111,7 @@
                             <div class="row mt-2" style="font-size: large;">
                                 <div class="col-12">
                                     <div class="">Certificat d'Identification Personnelle (CIP):</div>
-                                    <embed src="{{ asset('storage/documents/' . $demande->documentDemande->cip) }}" width="700" height="400"
+                                    <embed src="{{ asset('storage/' . $demande->documentDemande->cip) }}" width="700" height="400"
                                         type="application/pdf">
                                 </div>
                             </div>
@@ -121,7 +120,7 @@
                             <div class="row mt-2" style="font-size: large;">
                                 <div class="col-12">
                                     <div class="">Fiche de pré-inscription validée de l'année académique concernée:</div>
-                                    <embed src="{{ asset('storage/documents/' . $demande->documentDemande->fichepre_valid) }}" width="700" height="400"
+                                    <embed src="{{ asset('storage/' . $demande->documentDemande->fichepre_valid) }}" width="700" height="400"
                                         type="application/pdf">
                                 </div>
                             </div>
@@ -130,7 +129,7 @@
                             <div class="row mt-2" style="font-size: large;">
                                 <div class="col-12">
                                     <div class="">Fiche de pré-inscription validée de la dernière année académique:</div>
-                                    <embed src="{{ asset('storage/documents/' . $demande->documentDemande->fiche_prederniere) }}" width="700" height="400"
+                                    <embed src="{{ asset('storage/' . $demande->documentDemande->fiche_prederniere) }}" width="700" height="400"
                                         type="application/pdf">
                                 </div>
                             </div>
@@ -139,7 +138,7 @@
                             <div class="row mt-2" style="font-size: large;">
                                 <div class="col-12">
                                     <div class="">Relevés de notes du semestre 1:</div>
-                                    <embed src="{{ asset('storage/documents/' . $demande->documentDemande->releve_sem1) }}" width="700" height="400"
+                                    <embed src="{{ asset('storage/' . $demande->documentDemande->releve_sem1) }}" width="700" height="400"
                                         type="application/pdf">
                                 </div>
                             </div>
@@ -148,7 +147,7 @@
                             <div class="row mt-2" style="font-size: large;">
                                 <div class="col-12">
                                     <div class="">Relevés de notes du semestre 2:</div>
-                                    <embed src="{{ asset('storage/documents/' . $demande->documentDemande->releve_sem2) }}" width="700" height="400"
+                                    <embed src="{{ asset('storage/' . $demande->documentDemande->releve_sem2) }}" width="700" height="400"
                                         type="application/pdf">
                                 </div>
                             </div>
@@ -157,7 +156,7 @@
                             <div class="row mt-2" style="font-size: large;">
                                 <div class="col-12">
                                     <div class="">Relevés de notes du semestre 3:</div>
-                                    <embed src="{{ asset('storage/documents/' . $demande->documentDemande->releve_sem3) }}" width="700" height="400"
+                                    <embed src="{{ asset('storage/' . $demande->documentDemande->releve_sem3) }}" width="700" height="400"
                                         type="application/pdf">
                                 </div>
                             </div>
@@ -166,7 +165,7 @@
                             <div class="row mt-2" style="font-size: large;">
                                 <div class="col-12">
                                     <div class="">Relevés de notes du semestre 4:</div>
-                                    <embed src="{{ asset('storage/documents/' . $demande->documentDemande->releve_sem4) }}" width="700" height="400"
+                                    <embed src="{{ asset('storage/' . $demande->documentDemande->releve_sem4) }}" width="700" height="400"
                                         type="application/pdf">
                                 </div>
                             </div>
@@ -175,7 +174,7 @@
                             <div class="row mt-2" style="font-size: large;">
                                 <div class="col-12">
                                     <div class="">Relevés de notes du semestre 5:</div>
-                                    <embed src="{{ asset('storage/documents/' . $demande->documentDemande->releve_sem5) }}" width="700" height="400"
+                                    <embed src="{{ asset('storage/' . $demande->documentDemande->releve_sem5) }}" width="700" height="400"
                                         type="application/pdf">
                                 </div>
                             </div>
@@ -184,7 +183,7 @@
                             <div class="row mt-2" style="font-size: large;">
                                 <div class="col-12">
                                     <div class="">Relevés de notes du semestre 6:</div>
-                                    <embed src="{{ asset('storage/documents/' . $demande->documentDemande->releve_sem6) }}" width="700" height="400"
+                                    <embed src="{{ asset('storage/' . $demande->documentDemande->releve_sem6) }}" width="700" height="400"
                                         type="application/pdf">
                                 </div>
                             </div>
@@ -193,7 +192,7 @@
                             <div class="row mt-2" style="font-size: large;">
                                 <div class="col-12">
                                     <div class="">Quitus de dépôt de mémoire corrigé après soutenance:</div>
-                                    <embed src="{{ asset('storage/documents/' . $demande->quit_memo) }}" width="700" height="400"
+                                    <embed src="{{ asset('storage/' . $demande->quit_memo) }}" width="700" height="400"
                                         type="application/pdf">
                                 </div>
                             </div>
@@ -202,7 +201,7 @@
                             <div class="row mt-2" style="font-size: large;">
                                 <div class="col-12">
                                     <div class="">Attestation de diplôme:</div>
-                                    <embed src="{{ asset('storage/documents/' . $demande->documentDemande->copie_attes) }}" width="700" height="400"
+                                    <embed src="{{ asset('storage/' . $demande->documentDemande->copie_attes) }}" width="700" height="400"
                                         type="application/pdf">
                                 </div>
                             </div>
@@ -211,7 +210,7 @@
                             <div class="row mt-2" style="font-size: large;">
                                 <div class="col-12">
                                     <div class="">Diplôme:</div>
-                                    <embed src="{{ asset('storage/documents/' . $demande->documentDemande->copie_dipl) }}" width="700" height="400"
+                                    <embed src="{{ asset('storage/' . $demande->documentDemande->copie_dipl) }}" width="700" height="400"
                                         type="application/pdf">
                                 </div>
                             </div>
@@ -220,7 +219,7 @@
                             <div class="row mt-2" style="font-size: large;">
                                 <div class="col-12">
                                     <div class="">Acte à certifier:</div>
-                                    <embed src="{{ asset('storage/documents/' . $demande->documentDemande->copie_act) }}" width="700" height="400"
+                                    <embed src="{{ asset('storage/' . $demande->documentDemande->copie_act) }}" width="700" height="400"
                                         type="application/pdf">
                                 </div>
                             </div>
@@ -229,7 +228,7 @@
                             <div class="row mt-2" style="font-size: large;">
                                 <div class="col-12">
                                     <div class="">Demande adressée au directeur de l'IFRI:</div>
-                                    <embed src="{{ asset('storage/documents/' . $demande->documentDemande->demande_diro) }}" width="700" height="400"
+                                    <embed src="{{ asset('storage/' . $demande->documentDemande->demande_diro) }}" width="700" height="400"
                                         type="application/pdf">
                                 </div>
                             </div>
@@ -238,7 +237,7 @@
                             <div class="row mt-2" style="font-size: large;">
                                 <div class="col-12">
                                     <div class="">Certificat de perte:</div>
-                                    <embed src="{{ asset('storage/documents/' . $demande->documentDemande->cert_perte) }}" width="700" height="400"
+                                    <embed src="{{ asset('storage/' . $demande->documentDemande->cert_perte) }}" width="700" height="400"
                                         type="application/pdf">
                                 </div>
                             </div>
@@ -267,7 +266,7 @@
                             <div class="row mt-2" style="font-size: large;">
                                 <div class="col-12">
                                     <div class="">Quittance de paiement des frais pour l'acte:</div>
-                                    <embed src="{{ asset('storage/documents/' . $demande->paiement->preuve) }}" width="700" height="400"
+                                    <embed src="{{ asset('storage/' . $demande->paiement->preuve) }}" width="700" height="400"
                                         type="application/pdf">
                                 </div>
                             </div>

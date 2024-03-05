@@ -39,7 +39,7 @@
                                 <th>Matricule</th>
                                 <th>Nom</th>
                                 <th>Prénom</th>
-                                <th>Option</th>
+                                <th width="280px">Option</th>
                                 <th>Email</th>
                                 <th>Téléphone</th>
                                 <th width="280px">Actions</th>
@@ -55,21 +55,15 @@
                               <td>{{$etudiant->option}}</td>
                               <td>{{$etudiant->email}}</td>
                               <td>{{$etudiant->contact}}</td>
-                              <td>
-                                <span>
-                                    <a title="Modifier" data-toggle="modal" data-target="#basicModal-edit-user-etudiant-{{$etudiant->id}}">
-                                        <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg>
-                                    </a>
-                                </span>
-                                @include('admin.layouts.utilisateurs.edit-etudiant',["etudiant"=>$etudiant])
-
-                                <form action="{{ route('utilisateur.supetudiant', $etudiant->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button title="Supprimer" type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet étudiant ?')">
-                                        <span><i class="fa fa-trash font-18 align-middle mr-2"></i></span>
-                                    </button>
-                                </form>
+                              <td class="align-middle">
+                                <div class="d-flex justify-content-flex-start">
+                                    <a class="btn btn-primary btn-sm mr-1" data-toggle="modal" data-target="#basicModal-edit-user-etudiant-{{$etudiant->id}}">Modifier</a>
+                                    @include('admin.layouts.utilisateurs.edit-etudiant',["etudiant"=>$etudiant])
+                                    {!! Form::open(['method' => 'DELETE','route' => ['utilisateur.supetudiant', $etudiant->id],'style'=>'display:inline','onsubmit' => "return confirm('Êtes-vous sûr de vouloir supprimer cet étudiant ?')"]) !!}
+                                        @csrf
+                                        {!! Form::submit('Supprimer', ['class' => 'btn btn-sm btn-danger']) !!}
+                                    {!! Form::close() !!}
+                                </div>
                               </td>
                             </tr>
                           @endforeach
@@ -80,7 +74,7 @@
                                 <th>Matricule</th>
                                 <th>Nom</th>
                                 <th>Prénom</th>
-                                <th>Option</th>
+                                <th width="280px">Option</th>
                                 <th>Email</th>
                                 <th>Téléphone</th>
                                 <th width="280px">Actions</th>
@@ -114,6 +108,7 @@
                                 <th>#</th>
                                 <th>Nom</th>
                                 <th>Email</th>
+                                <th>Téléphone</th>
                                 <th>Roles</th>
                                 <th width="280px">Actions</th>
                             </tr>
@@ -124,6 +119,7 @@
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td>{{ $user->contact }}</td>
                                     <td>
                                         @if(!empty($user->getRoleNames()))
                                         @foreach($user->getRoleNames() as $v)
@@ -146,6 +142,7 @@
                                 <th>#</th>
                                 <th>Nom</th>
                                 <th>Email</th>
+                                <th>Téléphone</th>
                                 <th>Roles</th>
                                 <th width="280px">Actions</th>
                             </tr>

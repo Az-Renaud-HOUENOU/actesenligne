@@ -35,7 +35,7 @@
                                         @foreach($actes as $acte)
                                             <div class="form-group">
                                                 <div class="radio">
-                                                    <label>
+                                                    <label >
                                                         <input type="radio" name="optradio" class="acteSelectionne" value="{{ $acte->type_acte }}" data-type="{{ $acte->type_acte }}" data-id="{{ $acte->id }}" data-description="{{$acte->description}}">
                                                         {{$acte->type_acte}}
                                                     </label>
@@ -44,7 +44,7 @@
                                         @endforeach
                                     </form>
                                 </div>
-                            </div>/
+                            </div>
                             <div class="col-lg-6">
                                 <div id="divDescription" style="display:none;">
                                     <h4 id="titreActe"></h4><br>

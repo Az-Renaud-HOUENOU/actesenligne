@@ -52,20 +52,18 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$acte->type_acte}}</td>
                                     <td>{!!$acte->description!!}</td>
-                                    <td>
-                                        <div class="row">
-                                            <span>
-                                                <a title="Modifier" class="btn btn-warning" data-toggle="modal" data-target="#basicModal-edit-acte-academique-{{$acte->id}}">
-                                                    <i class="fa fa-pen font-18 align-middle mr-2e"></i>
-                                                </a>
-                                            </span>
+                                    <td class="align-middle">
+                                        <div class="d-flex justify-content-between">
+                                            <button title="Modifier" type="button" class="btn btn-warning" data-toggle="modal" data-target="#basicModal-edit-acte-academique-{{$acte->id}}">
+                                                <i class="fa fa-edit font-18 align-middle" style="color: #eaeef1"></i>
+                                            </button>
                                             @include('admin.layouts.acteacademique.edit-acte',["acte"=>$acte])
 
                                             <form action="{{ route('actes.destroy', $acte->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button title="Supprimer" type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet acte ?')">
-                                                    <span><i class="fa fa-trash font-18 align-middle mr-2"></i></span>
+                                                <button title="Supprimer" type="submit" class="btn btn-danger ml-1" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet acte ?')">
+                                                    <i class="fa fa-trash font-18 align-middle" style="color: #eaeef1"></i>
                                                 </button>
                                             </form>
                                         </div>

@@ -44,6 +44,18 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
+            <strong>Téléphone:</strong>
+            {{ $user->contact }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Fonction:</strong>
+            {{ $user->fonction }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
             <strong>Rôles:</strong>
             @if(!empty($user->getRoleNames()))
                 @foreach($user->getRoleNames() as $v)

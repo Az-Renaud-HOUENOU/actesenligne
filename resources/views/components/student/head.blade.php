@@ -36,7 +36,6 @@
 	<link rel="stylesheet" href=" {{ asset('student/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }} ">
     <link rel="stylesheet" href="{{ asset('student/css/style.css') }}">
     <link rel="stylesheet" href=" {{ asset('student/css/skin-3.css') }} ">
-    <link rel="stylesheet" href="{{ asset('student/css/styleperso.css') }}">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

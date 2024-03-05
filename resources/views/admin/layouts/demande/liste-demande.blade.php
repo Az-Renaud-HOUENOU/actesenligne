@@ -23,18 +23,18 @@
                 <h4 class="card-title">Liste des demandes</h4>
 
                 <div class="d-flex text-end">
-                                <form>
-                                    <div class="form-group">
-                                        <label>Afficher</label>
-                                        <select class="form-control" id="sel1">
-                                            <option value="toutes" selected>Toutes les demandes</option>
-                                            <option value="En attente">Demandes en attente</option>
-                                            <option value="En cours de traitement">Demandes en cours de traitement</option>
-                                            <option value="Traitée">Demandes traitées</option>
-                                            <option value="Rejetée">Demandes rejetées</option>
-                                        </select>
-                                    </div>
-                                </form>
+                    <form>
+                        <div class="form-group">
+                            <label>Afficher</label>
+                            <select class="form-control" id="sel1">
+                                <option value="toutes" selected>Toutes les demandes</option>
+                                <option value="En attente">Demandes en attente</option>
+                                <option value="En cours de traitement">Demandes en cours de traitement</option>
+                                <option value="Traitée">Demandes traitées</option>
+                                <option value="Rejetée">Demandes rejetées</option>
+                            </select>
+                        </div>
+                    </form>
                 </div>
 
             </div>
@@ -64,18 +64,18 @@
                                         @if($demande->statut=='Traitée')
                                             <span class="badge badge-success">{{$demande->statut}}</span>
                                         @elseif($demande->statut=='En cours de traitement')
-                                            <span class="badge badge-warning">{{$demande->statut}}</span>
+                                            <span class="badge badge-info">{{$demande->statut}}</span>
                                         @elseif($demande->statut=='Rejetée')
                                             <span class="badge badge-danger">{{$demande->statut}}</span>
+                                        @elseif($demande->statut=='En attente')
+                                            <span class="badge badge-warning">{{$demande->statut}}</span>
                                         @else
                                             <span>{{$demande->statut}}</span>
                                         @endif
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-details-demande-{{$demande->id}}-lg">
-                                            <a title="Voir" class="btn btn-info" href="#">
-                                                <i class="fa fa-eye font-18 align-middle mr-2" style="color: #015291"></i>
-                                            </a>
+                                        <button title="Voir" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-details-demande-{{$demande->id}}-lg">
+                                            <span><i class="fa fa-eye font-18 align-middle" style="color: #eaeef1"></i></span>
                                         </button>
                                         @include('admin.layouts.demande.details',["demande"=>$demande])
                                     </td>
@@ -107,7 +107,7 @@
             var selectedValue = selectElement.value;
 
             tableRows.forEach(function (row) {
-                var statutCell = row.querySelector('td:nth-child(5)');
+                var statutCell = row.querySelector('td:nth-child(6)');
                 var statut = statutCell.textContent.trim(); // Retirez les espaces blancs des deux côtés
 
                 if (selectedValue === 'toutes' || statut === selectedValue) {

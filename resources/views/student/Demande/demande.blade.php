@@ -21,7 +21,43 @@
             </div>
         </div>
         <p>Veuillez remplir en suivant rigourusement les regles donnees, le formulaire suivant pour votre demande.<br> Champ obligatoire <span style="color:red">*</span></p>
-                <!-- row -->
+
+        <script>
+            $(document).ready(function(){
+                $(".btn-prev").click(function(){
+                    var prevTab = $(this).attr("data-target");
+                    $(prevTab).tab("show");
+                    $(prevTab + "-tab").tab("show");
+                });
+
+                $(".btn-next").click(function(){
+                    var currentTab = $(this).attr("data-current-tab");
+                    var nextTab = $(this).attr("data-target");
+
+                    // Vérifier si tous les champs de l'étape précédente sont remplis
+                    var isValid = true;
+                    $(currentTab + " input, " + currentTab + " select").each(function(){
+                        if($(this).prop('required') && !$(this).val()){
+                            isValid = false;
+                            return false; // Sortir de la boucle each si un champ requis est vide
+                        }
+                    });
+
+                    if(isValid){
+                        $(nextTab).tab("show");
+                        $(nextTab + "-tab").tab("show");
+
+                        // Activer l'onglet correspondant à l'étape en cours
+                        $("a.nav-link").removeClass("active"); // Retirer la classe active de tous les onglets
+                        $("a[href='" + nextTab + "']").addClass("active"); // Ajouter la classe active à l'onglet de l'étape en cours
+                    } else {
+                        alert("Veuillez remplir tous les champs avant de passer à l'étape suivante.");
+                    }
+                });
+            });
+        </script>
+
+
                 <div class="row">
                     <div class="col-xl-12 col-xxl-12">
                         <div class="card">
@@ -31,7 +67,7 @@
                             <div class="card-body">
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="step1-tab" data-toggle="tab" href="#step1" role="tab" aria-controls="step1" aria-selected="true">INFORMATIONS PERSONNELLES</a>
+                                        <a class="nav-link" id="step1-tab" data-toggle="tab" href="#step1" role="tab" aria-controls="step1" aria-selected="true">INFORMATIONS PERSONNELLES</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="step2-tab" data-toggle="tab" href="#step2" role="tab" aria-controls="step2" aria-selected="false">JOINDRE LES PIECES</a>
@@ -144,7 +180,7 @@
                                                     </div>
                                                 </div>
                                             </section>
-                                            <button class="btn btn-primary" type="button" data-toggle="tab" href="#step2">Suivant</button>
+                                            <button class="btn btn-primary btn-next" type="button" data-toggle="tab" data-target="#step2">Suivant</button>
                                         </form>
                                     </div>
                                     <div class="tab-pane fade" id="step2" role="tabpanel" aria-labelledby="step2-tab">
@@ -361,50 +397,50 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                                <div class="col-lg-12 mb-4">
-                                                                    <div class="form-group">
-                                                                        <label class="text-label">Copie du relevé de notes du 2è semestre <span style="color:red">*</span></label>
-                                                                        <input type="file" name="releve_sem2" class="form-control  @error('releve_sem2') is-invalid  @enderror" placeholder="Votre relevé de notes du 2è semestre" >
-                                                                        @error('releve_sem2')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                        @enderror
+                                                        <div class="col-lg-12 mb-4">
+                                                            <div class="form-group">
+                                                                <label class="text-label">Copie du relevé de notes du 2è semestre <span style="color:red">*</span></label>
+                                                                <input type="file" name="releve_sem2" class="form-control  @error('releve_sem2') is-invalid  @enderror" placeholder="Votre relevé de notes du 2è semestre" >
+                                                                @error('releve_sem2')
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $message }}
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-lg-12 mb-4">
-                                                                    <div class="form-group">
-                                                                        <label class="text-label">Copie du relevé de notes du 3è semestre <span style="color:red">*</span></label>
-                                                                        <input type="file" name="releve_sem3" class="form-control  @error('releve_sem3') is-invalid  @enderror" placeholder="Votre relevé de notes du 3è semestre" >
-                                                                        @error('releve_sem3')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                        @enderror
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 mb-4">
+                                                            <div class="form-group">
+                                                                <label class="text-label">Copie du relevé de notes du 3è semestre <span style="color:red">*</span></label>
+                                                                <input type="file" name="releve_sem3" class="form-control  @error('releve_sem3') is-invalid  @enderror" placeholder="Votre relevé de notes du 3è semestre" >
+                                                                @error('releve_sem3')
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $message }}
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-lg-12 mb-4">
-                                                                    <div class="form-group">
-                                                                        <label class="text-label">Copie du relevé de notes du 4è semestre <span style="color:red">*</span></label>
-                                                                        <input type="file" name="releve_sem4" class="form-control  @error('releve_sem4') is-invalid  @enderror" placeholder="Votre relevé de notes du 4è semestre" >
-                                                                        @error('releve_sem4')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                        @enderror
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 mb-4">
+                                                            <div class="form-group">
+                                                                <label class="text-label">Copie du relevé de notes du 4è semestre <span style="color:red">*</span></label>
+                                                                <input type="file" name="releve_sem4" class="form-control  @error('releve_sem4') is-invalid  @enderror" placeholder="Votre relevé de notes du 4è semestre" >
+                                                                @error('releve_sem4')
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $message }}
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-lg-12 mb-4">
-                                                                    <div class="form-group">
-                                                                        <label class="text-label"> Original du quitus de dépôt du mémoire corrigé après la soutenance <span style="color:red">*</span></label>
-                                                                        <input type="file" name="quit_memo" class="form-control  @error('quit_memo') is-invalid  @enderror" placeholder="Votre Quitus de dépôt du mémoire corrigé après la soutenance" >
-                                                                        @error('quit_memo')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                        @enderror
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 mb-4">
+                                                            <div class="form-group">
+                                                                <label class="text-label"> Original du quitus de dépôt du mémoire corrigé après la soutenance <span style="color:red">*</span></label>
+                                                                <input type="file" name="quit_memo" class="form-control  @error('quit_memo') is-invalid  @enderror" placeholder="Votre Quitus de dépôt du mémoire corrigé après la soutenance" >
+                                                                @error('quit_memo')
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $message }}
                                                                     </div>
-                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
                                                     @endif
                                                     @if ($nomacte==="Supplément au diplôme Licence")
                                                         <div class="col-lg-12 mb-4">
@@ -675,11 +711,11 @@
                                                     @endif
                                                 </div>
                                             </section>
-                                            <button class="btn btn-primary" type="button" data-toggle="tab" href="#step1">Précédant</button>
+                                            <button class="btn btn-primary btn-prev" type="button" data-toggle="tab" data-target="#step1">Précédant</button>
                                             @if ($nomacte==="Attestation de main levée")
                                                 <button class="btn btn-primary" type="submit">Soumettre</button>
                                             @else
-                                                <button class="btn btn-primary" type="button" data-toggle="tab" href="#step3">Suivant</button>
+                                                <button class="btn btn-primary btn-next" type="button" data-toggle="tab" data-target="#step3">Suivant</button>
                                             @endif
                                         </form>
                                     </div>
@@ -724,7 +760,7 @@
                                                         </div>
                                                     </div>
                                                 </section>
-                                                <button class="btn btn-primary" type="button" data-toggle="tab" href="#step2">Précédant</button>
+                                                <button class="btn btn-primary btn-prev" type="button" data-toggle="tab" data-target="#step2">Précédant</button>
                                                 <button class="btn btn-primary" type="submit">Soumettre</button>
                                             </form>
                                         </div>
@@ -736,4 +772,5 @@
                 </div>
     </div>
 </div>
+
 @endsection

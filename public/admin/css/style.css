@@ -4,7 +4,7 @@
     Name                 : Efron
     Author               : Quixkit
     Author Portfolio     : https://themeforest.net/user/quixkit/portfolio
-    
+
 
 
     Table of Sass Contents
@@ -16,7 +16,7 @@
         _mixin
         _variable
 
-    2. bootstrap 
+    2. bootstrap
         -Here goes all official bootstrap scss files
 
     3. Global/Base
@@ -53,7 +53,7 @@
         _page-user-lock
 
 */
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 @import url("./../icons/simple-line-icons/css/simple-line-icons.css");
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 @import url("./../icons/material-design-iconic-font/css/materialdesignicons.min.css");
@@ -237,7 +237,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
   --breakpoint-xxl: 1440;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Poppins, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
 *,
@@ -256,7 +256,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5;
@@ -4513,7 +4513,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -4598,7 +4598,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -12020,7 +12020,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   font-family: 'Open Sans', sans-serif; }
 
 [data-typography="poppins"] {
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Poppins', sans-serif; }
 
 [data-typography="roboto"] {
   font-family: 'Roboto', sans-serif; }
@@ -14072,7 +14072,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   background: #fff;
   padding: 0.3125rem;
   border-radius: 0.3125rem;
-  font-family: 'Roboto' !important;
+  font-family: 'Poppins' !important;
   color: #593bdb;
   border: 1px solid rgba(89, 59, 219, 0.3); }
 
