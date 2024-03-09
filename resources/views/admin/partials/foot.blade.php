@@ -11,6 +11,7 @@
 
 <script src="{{asset('admin/vendor/circle-progress/circle-progress.min.js')}}"></script>
 <script src="{{asset('admin/vendor/chart.js/Chart.bundle.min.js')}}"></script>
+<script src="{{asset('admin/js/plugins-init/chartjs-init.js')}}"></script>
 
 <script src="{{asset('admin/vendor/gaugeJS/dist/gauge.min.js')}}"></script>
 

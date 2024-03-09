@@ -54,6 +54,7 @@ Route::middleware(['check.admin.super'])->prefix('admin')->group(function(){
     Route::get('utilisateurs/{etudiant}/edit', [App\Http\Controllers\Admin\ListeUtilisateurController::class, 'edit_etudiant'])->name('utilisateur.editetudiant');
 
     Route::get('statistiques', [App\Http\Controllers\Admin\StatistiqueController::class, 'index'])->name('statistique.demande');
+    Route::get('exporterpdf', [App\Http\Controllers\Admin\StatistiqueController::class, 'exportPdf'])->name('exporter.statistique');
 });
 Route::get('admin/demandes', [App\Http\Controllers\Admin\DemandeController::class, 'index'])->name('demandes');
 Route::put('admin/demande/{id}valider', [App\Http\Controllers\Admin\DemandeController::class, 'validateDemande'])->name('demande.validate');

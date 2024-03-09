@@ -16,59 +16,50 @@
                     </div>
 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card">
-                            <div class="stat-widget-two card-body">
-                                <div class="stat-content">
-                                    <div class="stat-text">Demandes Traitées </div>
-                                    <div class="stat-digit" data-class="bg-success"> <i class="fa fa-circle"></i>8500</div>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success w-85" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
+                    <div class="col mx-2 p-4 shadow p-2" style="background-color:white;">
+                        <h3 class="text-center pt-2">Demandes ({{ $all_demandes }})</h3>
+                        <div class="widget-timeline mt-4" style="font-size: 18px; justify-content : space-between;">
+                            <ul class="timeline">
+                                <li>
+                                    <div class="timeline-badge success"></div>
+                                    <a class="timeline-panel text-muted" href="#">
+                                        <span>Traitées ({{ $d_tr }})</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge info"></div>
+                                    <a class="timeline-panel text-muted" href="#">
+                                        <span>En Cours de Traitement ({{ $d_ct }})</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge warning"></div>
+                                    <a class="timeline-panel text-muted" href="#">
+                                        <span>En Attente ({{ $d_ea }})</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge danger">
+                                    </div>
+                                    <a class="timeline-panel text-muted" href="#">
+                                        <span>Rejetées ({{ $d_rj }})</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card">
-                            <div class="stat-widget-two card-body">
-                                <div class="stat-content">
-                                    <div class="stat-text">Demandes En Cours de Traitement</div>
-                                    <div class="stat-digit" data-class="bg-primary"> <i class="fa fa-circle"></i>7800</div>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-primary w-75" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
+                    <div class="col p-4 mx-1 shadow p-2" style="background-color: white;">
+                        <h3 class="text-center pt-2">Actes Académiques</h3>
+                        <p class="text-center mt-4" style="font-size: 18px;">
+                            ({{ $all_actes }})
+                        </p>
+                    </div>
+                    <div class="col mx-2 p-4 shadow p-2" style="background-color:white;">
+                        <h3 class="text-center pt-2">Utilisateurs ({{ $all_users }})</h3>
+                        <div class="mt-4 d-flex" style="font-size: 18px; justify-content : space-between;">
+                            <div>Etudiants ({{ $all_etu }})</div>
+                            <div>Personnel Administratif ({{ $all_adm }})</div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card">
-                            <div class="stat-widget-two card-body">
-                                <div class="stat-content">
-                                    <div class="stat-text">Demandes En Attente</div>
-                                    <div class="stat-digit" data-class="bg-warning"> <i class="fa fa-circle"></i> 500</div>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-warning w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card">
-                            <div class="stat-widget-two card-body">
-                                <div class="stat-content">
-                                    <div class="stat-text">Demandes Rejetées</div>
-                                    <div class="stat-digit" data-class="bg-danger"> <i class="fa fa-circle"></i>650</div>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-danger w-65" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /# card -->
-                    </div>
-                    <!-- /# column -->
                 </div>
 @endsection

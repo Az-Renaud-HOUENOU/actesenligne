@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers\Etudiant;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\RequestOptions;
 use App\Models\Paiement;
 use App\Models\DocumentsDemande;
-use App\Models\Etudiant;
 use App\Models\Demande;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\DemandeVerificationEmail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use App\Notifications\DemandeNotifcation;
-use Illuminate\Notifications\Notification;
-use App\Http\Requests\Etudiant\DemandeRequest;
 use App\Notifications\DemandeApprouveeNotification;
-use Illuminate\Support\Facades\DB;
 use App\Helpers\CodeHelpers;
 use App\Models\User;
 
@@ -56,8 +53,37 @@ class ReleveController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(DemandeRequest $request)
+    public function store(Request $request)
     {
+        $request->validate([
+            'nom' => 'min:3',
+            'prenom' => 'min:3',
+            'matricule' => 'numeric',
+            'option' => 'min:3',
+            'email' => 'email',
+            'numero' => 'min:3',
+            'annee_academique' => 'required',
+            'fichepre_valid' => 'required|extensions:pdf',
+            'acte_nais' => 'required|extensions:pdf',
+            'cip' => 'required|extensions:pdf',
+            'fiche_prederniere' => 'required|extensions:pdf',
+            'releve_sem1' => 'required|extensions:pdf',
+            'releve_sem2' => 'required|extensions:pdf',
+            'releve_sem3' => 'required|extensions:pdf',
+            'releve_sem4' => 'required|extensions:pdf',
+            'releve_sem5' => 'required|extensions:pdf',
+            'releve_sem6' => 'required|extensions:pdf',
+            'quit_memo' => 'required|extensions:pdf',
+            'copie_attes' => 'required|extensions:pdf',
+            'copie_dipl' => 'required|extensions:pdf',
+            'demande_diro' => 'required|extensions:pdf',
+            'copie_act' => 'required|extensions:pdf',
+            'cert_perte' => 'required|extensions:pdf',
+            'pay_num' => 'required|numeric',
+            'montant_paye' => 'required|numeric',
+            'preuve' => 'required|extensions:pdf',
+        ]);
+
         $otp = CodeHelpers::generateOTP();
 
         $paiement = Paiement::create([
@@ -101,6 +127,33 @@ class ReleveController extends Controller
         Mail::to($demande->etudiant->email)->send(new DemandeVerificationEmail($code_demande,$acte_demande));
         session()->flash('success', "Demande soumise avec succès! Le code de votre demande est: $code_demande");
 
+        $client = new Client([
+            'base_uri' => "https://ppr4pl.api.infobip.com/",
+            'headers' => [
+                'Authorization' => "App 090a4ef9cb3100d5253f5883b6c239ce-cd51ed61-03f0-462e-ae05-3a6b335367b6",
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+            ]
+        ]);
+
+        $client->request(
+            'POST',
+            'sms/2/text/advanced',
+            [
+                RequestOptions::JSON => [
+                    'messages' => [
+                        [
+                            'from' => 'IFRI-UAC',
+                            'destinations' => [
+                                ['to' => "'.$request->numero.'"]
+                            ],
+                            'text' => 'Votre demande de '.$acte_demande.' à IFRI-UAC a été enregistrée sous le code de demande '. $demande['code'],
+                        ]
+                    ]
+                ],
+            ]
+        );
+
         // Envoi d'une notification à l'utilisateur pour la nouvelle demande
         $etudiantRelation = $demande->etudiant(); // Obtenez la relation BelongsTo
         $etudiant = $etudiantRelation->first();
@@ -128,7 +181,7 @@ class ReleveController extends Controller
             $administrateur->notify(new DemandeApprouveeNotification($demande));
         }
 
-        return to_route('student.');
+        return redirect()->route('student.');
     }
 
     /**

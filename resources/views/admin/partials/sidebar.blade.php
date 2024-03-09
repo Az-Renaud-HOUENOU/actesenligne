@@ -17,7 +17,6 @@
                                 class="icon icon-chart-bar-33"></i><span class="nav-text">Statistiques</span></a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('statistique.demande') }}">Statistiques</a></li>
-                            <li><a href="#">Exporter pdf</a></li>
                         </ul>
                     </li>
                     @if(Auth::user()->fonction === 'Super Administrateur')
@@ -26,7 +25,6 @@
                             <ul aria-expanded="false">
                                 <li><a href="{{route('users.index')}}">Utilisateurs</a></li>
                                 <li><a href="{{route('roles.index')}}">Rôles</a></li>
-                                <li><a href="#">Permissions</a></li>
                             </ul>
                         </li>
                     @endif

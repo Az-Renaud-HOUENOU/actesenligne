@@ -2,9 +2,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!--==================== CSS ====================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-
     <title>  @yield('title') Dashboard Etudiant</title>
 
     <meta name="description" content="Le site officiel de L'Institut de Formation et de Recherche en Informatique de L'UAC">
@@ -39,6 +36,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-

@@ -9,6 +9,8 @@ use App\Mail\DemandeRejeterMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use GuzzleHttp\Client;
+use GuzzleHttp\RequestOptions;
 
 class DemandeController extends Controller
 {
@@ -105,6 +107,33 @@ class DemandeController extends Controller
             'motif_rejet' => $request->motif_rejet
         ];
         Mail::to($demande->etudiant->email)->send(new DemandeRejeterMail($data));
+
+        $client = new Client([
+            'base_uri' => "https://ppr4pl.api.infobip.com/",
+            'headers' => [
+                'Authorization' => "App 090a4ef9cb3100d5253f5883b6c239ce-cd51ed61-03f0-462e-ae05-3a6b335367b6",
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+            ]
+        ]);
+
+        $client->request(
+            'POST',
+            'sms/2/text/advanced',
+            [
+                RequestOptions::JSON => [
+                    'messages' => [
+                        [
+                            'from' => 'IFRI-UAC',
+                            'destinations' => [
+                                ['to' => "'.$request->numero.'"]
+                            ],
+                            'text' => 'Votre demande de '.$demande->acteAcademique->type_acte.' à IFRI-UAC enregistreé sous le code de demande '. $demande->code. 'a été réjetée pour '.$request->motif_rejet .'.',
+                        ]
+                    ]
+                ],
+            ]
+        );
 
         Alert::success('Succès!','La réponse à la demande a été bien envoyé à l\'étudiant');
 

@@ -17,13 +17,29 @@
         </ol>
     </div>
 </div>
-<canvas id="myChart" width="400" height="400"></canvas>
+<div class="row">
+    <div class="col-lg-12 margin-tb">
+        <div class="card">
+            <div class="card-header">
+                <div class="pull-left">
+                    <h2>Statistiques des demandes par mois</h2>
+                </div>
+                <div class="pull-right">
+                    <a type="button" class="btn btn-success" href="{{ route('exporter.statistique') }}">Exporter en pdf</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <canvas id="demandesChart" width="400" height="400"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var labels = <?php echo json_encode(array_keys($demandesParMois)); ?>; // Tableau des étiquettes (mois)
-    var data = <?php echo json_encode(array_values($demandesParMois)); ?>; // Tableau des valeurs (nombre de demandes)
+    var ctx = document.getElementById('demandesChart').getContext('2d');
+    var labels = {!! json_encode(array_keys($demandesParMois)) !!}; // Tableau des étiquettes (mois)
+    var data = {!! json_encode(array_values($demandesParMois)) !!}; // Tableau des valeurs (nombre de demandes)
 
     var myChart = new Chart(ctx, {
         type: 'bar',

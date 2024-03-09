@@ -8,7 +8,8 @@ use App\Models\ReponseDemande;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ReponseDemandeMail;
-use Illuminate\Support\Facades\Storage;
+use GuzzleHttp\Client;
+use GuzzleHttp\RequestOptions;
 
 class ReponseController extends Controller
 {
@@ -53,10 +54,37 @@ class ReponseController extends Controller
         // Récupérer les détails de l'étudiant et de la demande
         $etudiant = $reponse->demande->etudiant;
         $demande = $reponse->demande->acteAcademique;
-        $chemin_fichier_complet = storage_path('{{asset("/storage/reponses/")}}' . $reponse['fichier_acte']);
+        $chemin_fichier_complet = storage_path('{{asset("/storage/")}}' . $reponse['fichier_acte']);
 
         // Envoyer l'e-mail à l'étudiant
         Mail::to($etudiant->email)->send(new ReponseDemandeMail($etudiant, $demande, $chemin_fichier_complet));
+
+        $client = new Client([
+            'base_uri' => "https://ppr4pl.api.infobip.com/",
+            'headers' => [
+                'Authorization' => "App 090a4ef9cb3100d5253f5883b6c239ce-cd51ed61-03f0-462e-ae05-3a6b335367b6",
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+            ]
+        ]);
+
+        $client->request(
+            'POST',
+            'sms/2/text/advanced',
+            [
+                RequestOptions::JSON => [
+                    'messages' => [
+                        [
+                            'from' => 'IFRI-UAC',
+                            'destinations' => [
+                                ['to' => "'.$request->numero.'"]
+                            ],
+                            'text' => 'Votre demande de '.$reponse->demande->acteAcademique->type_acte.' à IFRI-UAC enregistreé sous le code de demande '. $reponse->demande->code. 'a été déjà traitée. Consultez votre boite mail pour télécharger votre acte demandé.',
+                        ]
+                    ]
+                ],
+            ]
+        );
 
         $demande=Demande::find($demande);
         $demande->statut='Traitée';

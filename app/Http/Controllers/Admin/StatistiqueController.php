@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Demande;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
-use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 
 class StatistiqueController extends Controller
 {
@@ -37,6 +36,8 @@ class StatistiqueController extends Controller
 
     public function exportPdf()
     {
+        $admin = Auth::user();
+        $notifications = $admin->unreadNotifications;
         // Récupérer les données comme dans la méthode précédente
         $demandesParMois = Demande::select(DB::raw('YEAR(created_at) as year, MONTH(created_at) as month, COUNT(*) as total'))
             ->groupBy(DB::raw('YEAR(created_at)'), DB::raw('MONTH(created_at)'))
@@ -53,10 +54,7 @@ class StatistiqueController extends Controller
             $data[$year][$month] = $total;
         }
 
-        // Passer les données à la vue
-        $pdf = PDF::loadView('dashboard.export_pdf', ['demandesParMois' => $data]);
+        return Pdf::loadView('admin.layouts.statistique', ['demandesParMois' => $data, 'notifications' => $notifications])->download('statistiques.pdf');
 
-        // Télécharger le PDF
-        return $pdf->download('statistiques.pdf');
     }
 }
