@@ -34,3 +34,10 @@
     <script src=" {{ asset('student/js/stepper.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="{{ asset('admin/vendor/jquery-steps/build/jquery.steps.min.js') }}"></script>
+    <script src="{{ asset('admin/vendor/jquery-validation/jquery.validate.min.js') }}"></script>
+    <!-- Form validate init -->
+    <script src="{{ asset('admin/js/plugins-init/jquery.validate-init.js') }}"></script>
+    <!-- Form step init -->
+    <script src="{{ asset('admin/js/plugins-init/jquery-steps-init.js') }}"></script>

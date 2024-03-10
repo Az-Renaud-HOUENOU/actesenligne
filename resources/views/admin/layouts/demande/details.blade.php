@@ -350,15 +350,15 @@
                 @endcan
             </div>
             <div class="modal-footer">
-                <div class="row">
+                <div class="row justify-content-flex-start">
                     @if($demande->statut=='En attente')
                         @can('demande-validate')
-                            <a style="padding:10px; background-color: #015291 ! important;" type="button" class="btn btn-primary" href="{{route('demande.validate',['id'=>$demande->id])}}" onclick="event.preventDefault(); document.getElementById('valider-form-{{ $demande->id }}').submit();">
+                            <a style="padding:10px; background-color: #015291 ! important;" type="button" class="btn btn-primary btn-lg pull-left mr-1" href="{{route('demande.validate',['id'=>$demande->id])}}" onclick="event.preventDefault(); document.getElementById('valider-form-{{ $demande->id }}').submit();">
                                 <h6 style="color: #fff ! important; font-weight:bold">Valider</h6>
                             </a>
                         @endcan
                         @can('demande-reject')
-                            <a style="padding:10px; background-color: #f7b200 ! important;" type="button" class="btn btn-primary" href="#" onclick="event.preventDefault(); document.getElementById('rejeter-form-{{ $demande->id }}').style.display='block';">
+                            <a style="padding:10px; background-color: #f7b200 ! important;" type="button" class="btn btn-primary btn-lg pull-right" href="#" onclick="event.preventDefault(); document.getElementById('rejeter-form-{{ $demande->id }}').style.display='block';">
                                 <h6 style="font-weight:bold">Rejeter</h6>
                             </a>
                         @endcan

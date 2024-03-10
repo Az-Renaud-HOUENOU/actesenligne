@@ -38,4 +38,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 
+    <link href="{{ asset('admin/vendor/jquery-steps/css/jquery.steps.css') }}" rel="stylesheet">
+
     <meta name="csrf-token" content="{{ csrf_token() }}">

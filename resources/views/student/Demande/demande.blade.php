@@ -25,10 +25,10 @@
             <div class="col-xl-12 col-xxl-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">@yield('title')</h4>
+                        <h4 class="card-title">Demande d'acte académique: <strong>{{ $nomacte }}</strong></h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('student.demande.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('student.demande.store') }}" method="POST" enctype="multipart/form-data" id="step-form-horizontal" class="step-form-horizontal">
                             @csrf
                             <div>
                                 <input type="hidden" name="acte_id" value="{{$demande}}">
@@ -155,7 +155,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        @if ($nomacte=="Attestation d'inscription ou Certificat de scolarité")
+                                        @if ($nomacte=="Attestation d'Inscription ou Certificat de Scolarité")
                                             <div class="col-lg-12 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie de la fiche de préinscription validée de l'année acdémique concernée <span style="color:red">*</span></label>
@@ -696,7 +696,10 @@
                                         </div>
                                     </section>
                                 @endif
-                                <button class="btn btn-success btn-lg pull-right" type="submit">Soumettre</button>
+                                <h4></h4>
+                                <section>
+
+                                </section>
                             </div>
                         </form>
                     </div>
