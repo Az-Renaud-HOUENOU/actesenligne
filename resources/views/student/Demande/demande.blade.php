@@ -698,7 +698,22 @@
                                 @endif
                                 <h4></h4>
                                 <section>
-
+                                    <div class="row">
+                                        <div class="col-md-8 offset-md-2">
+                                            <div class="card mt-4">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Instructions finales et assistance</h5>
+                                                    <p class="card-text">Merci d'avoir rempli le formulaire pour votre demande d'acte académique en ligne. Avant de soumettre votre demande, veuillez prendre un moment pour lire les instructions finales suivantes :</p>
+                                                    <ol>
+                                                        <li>Vérification des informations : Assurez-vous d'avoir correctement rempli toutes les sections du formulaire avec les informations exactes. Cela inclut vos coordonnées personnelles, les pièces jointes requises et les détails de paiement. Des informations précises garantissent un traitement rapide et efficace de votre demande.</li>
+                                                        <li>Assistance supplémentaire : Si vous avez des questions ou si vous avez besoin d'aide supplémentaire pour remplir ce formulaire, n'hésitez pas à contacter notre équipe d'assistance dédiée. Vous pouvez nous joindre par téléphone au <strong>(+229) 55 02 80 70</strong> ou par e-mail à <a href="mailto:secretariat@ifri.uac.bj">secretariat@ifri.uac.bj</a>. Nous sommes là pour vous aider et répondre à toutes vos questions.</li>
+                                                        <li>Confirmation de soumission : Après avoir soumis votre demande, vous recevrez un e-mail de confirmation contenant le code d'enregistrement de votre demande, ceci vous permettra de vérifier le statut de votre demande. Veuillez vérifier votre boîte de réception et votre dossier de courriers indésirables pour vous assurer de recevoir notre e-mail. Si vous ne recevez pas de confirmation dans les 24 heures suivant votre soumission, veuillez nous contacter immédiatement.</li>
+                                                    </ol>
+                                                    <p>Nous vous remercions de votre confiance en notre service en ligne. Nous nous engageons à fournir une expérience de demande fluide et efficace. Si vous avez des préoccupations ou des commentaires concernant votre expérience, n'hésitez pas à nous les partager. Votre feedback est précieux pour nous aider à améliorer nos services.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </section>
                             </div>
                         </form>
