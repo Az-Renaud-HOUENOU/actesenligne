@@ -33,3 +33,10 @@
 <!-- Datatable -->
 <script src="{{asset('admin/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('admin/js/plugins-init/datatables.init.js')}}"></script>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/41.3.0/classic/ckeditor.js"></script>
+<script src="{{asset('js/ckeditor.js')}}"></script>
+
+{{-- <script src="https://cdn.tiny.cloud/1/w4x81blp4di4iswxv4q69ijz8nnepfl81eq0ycy7iyzwupmj/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script> --}}
+{{-- <script src="{{asset('js/tinymce.js')}}"></script> --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

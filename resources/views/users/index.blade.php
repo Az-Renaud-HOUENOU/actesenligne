@@ -129,7 +129,7 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Voir</a>
-                                        <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Mofifier</a>
+                                        <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Modifier</a>
                                         {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
                                             {!! Form::submit('Supprimer', ['class' => 'btn btn-danger']) !!}
                                         {!! Form::close() !!}

@@ -335,8 +335,9 @@
                                                             </span>
                                                             @enderror
                                                         </div>
-                                                        <div class="text-center">
-                                                            <button type="submit" class="btn btn-primary btn-block">Rejeter</button>
+                                                        <div class="d-flex justify-content-end">
+                                                            <button type="submit" class="btn btn-primary mr-2">Rejeter</button>
+                                                            <button class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('rejeter-form-{{ $demande->id }}').style.display='none'; document.getElementById('boutonValidation').style.display='block';">Annuler</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -350,15 +351,15 @@
                 @endcan
             </div>
             <div class="modal-footer">
-                <div class="row justify-content-flex-start">
+                <div class="d-flex justify-content-end">
                     @if($demande->statut=='En attente')
                         @can('demande-validate')
-                            <a style="padding:10px; background-color: #015291 ! important;" type="button" class="btn btn-primary btn-lg pull-left mr-1" href="{{route('demande.validate',['id'=>$demande->id])}}" onclick="event.preventDefault(); document.getElementById('valider-form-{{ $demande->id }}').submit();">
+                            <a id="boutonValidation" style="padding:auto; background-color: #015291 ! important;" type="button" class="btn btn-primary pull-left mr-2" href="{{route('demande.validate',['id'=>$demande->id])}}" onclick="event.preventDefault(); document.getElementById('valider-form-{{ $demande->id }}').submit();">
                                 <h6 style="color: #fff ! important; font-weight:bold">Valider</h6>
                             </a>
                         @endcan
                         @can('demande-reject')
-                            <a style="padding:10px; background-color: #f7b200 ! important;" type="button" class="btn btn-primary btn-lg pull-right" href="#" onclick="event.preventDefault(); document.getElementById('rejeter-form-{{ $demande->id }}').style.display='block';">
+                            <a id="boutonRejet" style="padding:auto; background-color: #f7b200 ! important;" type="button" class="btn btn-primary pull-right" href="#" onclick="event.preventDefault(); document.getElementById('rejeter-form-{{ $demande->id }}').style.display='block'; document.getElementById('boutonValidation').style.display='none';">
                                 <h6 style="font-weight:bold">Rejeter</h6>
                             </a>
                         @endcan

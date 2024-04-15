@@ -5,7 +5,7 @@ tinymce.init({
     tinycomments_mode: 'embedded',
     tinycomments_author: 'Renaud',
     mergetags_list: [
-        { value: 'Renaud Houenou', title: 'First Name' },
+        { value: 'Renaud Houénou', title: 'First Name' },
         { value: 'houenourenaud3@gmail.com', title: 'Email' },
       ],
     ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
@@ -19,7 +19,7 @@ tinymce.init({
     tinycomments_mode: 'embedded',
     tinycomments_author: 'Renaud',
     mergetags_list: [
-        { value: 'Renaud Houenou', title: 'First Name' },
+        { value: 'Renaud Houénou', title: 'First Name' },
         { value: 'houenourenaud3@gmail.com', title: 'Email' },
       ],
     ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),

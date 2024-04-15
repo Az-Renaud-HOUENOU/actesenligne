@@ -20,7 +20,7 @@
                         <div class="row mb-3">
                             <div class="col-12">
                                 <label for="description" class="form-label">Description</label>
-                                <textarea name="description" id="description2" class="form-control" cols="5" rows="4" >{{ $acte->description }}</textarea>
+                                <textarea name="description" id="description2" class="form-control" cols="5" rows="4">{{ $acte->description }}</textarea>
                             </div>
                         </div>
                     </div>

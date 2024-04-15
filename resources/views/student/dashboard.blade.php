@@ -59,7 +59,7 @@
                                     NB: Tout paiement de frais sont à verser sur le compte de l'Institut ouvert dans les livres du Trésor public: <br>
                                     <ul>
                                         <li>Numéro du compte: <strong>BJ660 01001 000001044774 37;</strong></li>
-                                        <li>Ce compte est accessible pour les paiements en ligne via le lien <a href="https://equittancetresor.finances.bj:9051/paiement/">https://equittancetresor.finances.bj:9051/paiement/</a> ou en espèces à la Direction générale
+                                        <li>Ce compte est accessible pour les paiements en ligne via le lien <strong><a href="https://equittancetresor.finances.bj:9051/paiement/">https://equittancetresor.finances.bj:9051/paiement/</a></strong> ou en espèces à la Direction générale
                                         du Trésor et de la Comptabilité public (DGTCP) du Ministère de l'Economie et des Finances.</li>
                                     </ul>
                                 </p>
@@ -113,7 +113,7 @@
                 text: "{{ session('success') }}",
                 showConfirmButton:true,
                 closeOnConfirm:true,
-                confirmButtonText: 'Cool'
+                confirmButtonText: 'OK'
             });
         });
     </script>

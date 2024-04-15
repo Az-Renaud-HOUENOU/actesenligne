@@ -121,7 +121,7 @@
                                                     @for ($i = 0; $i < $nombre_annees; $i++)
                                                         @php
                                                             $annee_debut = $annee_actuelle - $i;
-                                                            $annee_fin = $annee_actuelle - $i + 1;
+                                                            $annee_fin = $annee_debut + 1;
                                                         @endphp
                                                         <option>{{ $annee_debut }} - {{ $annee_fin }}</option>
                                                     @endfor
@@ -241,7 +241,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 1er semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem1" class="form-control  @error('releve_sem1') is-invalid  @enderror" placeholder="Votre relevé de notes du 1er semestre" required>
@@ -252,7 +252,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 2è semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem2" class="form-control  @error('releve_sem2') is-invalid  @enderror" placeholder="Votre relevé de notes du 2è semestre" required>
@@ -263,7 +263,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 3è semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem3" class="form-control  @error('releve_sem3') is-invalid  @enderror" placeholder="Votre relevé de notes du 3è semestre" required>
@@ -274,7 +274,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 4è semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem4" class="form-control  @error('releve_sem4') is-invalid  @enderror" placeholder="Votre relevé de notes du 4è semestre" required>
@@ -285,7 +285,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 5è semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem5" class="form-control  @error('releve_sem5') is-invalid  @enderror" placeholder="Votre relevé de notes du 5è semestre" required>
@@ -296,7 +296,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 6è semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem6" class="form-control  @error('releve_sem6') is-invalid  @enderror" placeholder="Votre relevé de notes du 6è semestre" required>
@@ -331,7 +331,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 1er semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem1" class="form-control  @error('releve_sem1') is-invalid  @enderror" placeholder="Votre relevé de notes du 1er semestre" required>
@@ -342,7 +342,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 2è semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem2" class="form-control  @error('releve_sem2') is-invalid  @enderror" placeholder="Votre relevé de notes du 2è semestre" required>
@@ -353,7 +353,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 3è semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem3" class="form-control  @error('releve_sem3') is-invalid  @enderror" placeholder="Votre relevé de notes du 3è semestre" required>
@@ -364,7 +364,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 4è semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem4" class="form-control  @error('releve_sem4') is-invalid  @enderror" placeholder="Votre relevé de notes du 4è semestre" required>
@@ -410,7 +410,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 1er semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem1" class="form-control  @error('releve_sem1') is-invalid  @enderror" placeholder="Votre relevé de notes du 1er semestre" required>
@@ -421,7 +421,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 2è semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem2" class="form-control  @error('releve_sem2') is-invalid  @enderror" placeholder="Votre relevé de notes du 2è semestre" required>
@@ -432,7 +432,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 3è semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem3" class="form-control  @error('releve_sem3') is-invalid  @enderror" placeholder="Votre relevé de notes du 3è semestre" required>
@@ -443,7 +443,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 4è semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem4" class="form-control  @error('releve_sem4') is-invalid  @enderror" placeholder="Votre relevé de notes du 4è semestre" required>
@@ -454,7 +454,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 5è semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem5" class="form-control  @error('releve_sem5') is-invalid  @enderror" placeholder="Votre relevé de notes du 5è semestre" required>
@@ -465,7 +465,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 6è semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem6" class="form-control  @error('releve_sem6') is-invalid  @enderror" placeholder="Votre relevé de notes du 6è semestre" required>
@@ -500,7 +500,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 1er semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem1" class="form-control  @error('releve_sem1') is-invalid  @enderror" placeholder="Votre relevé de notes du 1er semestre" required>
@@ -511,7 +511,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 2è semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem2" class="form-control  @error('releve_sem2') is-invalid  @enderror" placeholder="Votre relevé de notes du 2è semestre" required>
@@ -522,7 +522,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 3è semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem3" class="form-control  @error('releve_sem3') is-invalid  @enderror" placeholder="Votre relevé de notes du 3è semestre" required>
@@ -533,7 +533,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Copie du relevé de notes du 4è semestre <span style="color:red">*</span></label>
                                                     <input type="file" name="releve_sem4" class="form-control  @error('releve_sem4') is-invalid  @enderror" placeholder="Votre relevé de notes du 4è semestre" required>
@@ -569,7 +569,7 @@
                                                 </div>
                                             </div>
                                         @endif
-                                        @if ($nomacte==="Duplicata de diplome Licence")
+                                        @if ($nomacte==="Duplicata de diplôme Licence")
                                             <div class="col-lg-12 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Demande adressée au Directeur de l'IFRI <span style="color:red">*</span></label>
@@ -593,7 +593,7 @@
                                                 </div>
                                             </div>
                                         @endif
-                                        @if ($nomacte==="Duplicata de diplome Master")
+                                        @if ($nomacte==="Duplicata de diplôme Master")
                                             <div class="col-lg-12 mb-4">
                                                 <div class="form-group">
                                                     <label class="text-label">Demande adressée au Directeur de l'IFRI <span style="color:red">*</span></label>
@@ -699,18 +699,16 @@
                                 <h4></h4>
                                 <section>
                                     <div class="row">
-                                        <div class="col-md-8 offset-md-2">
-                                            <div class="card mt-4">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Instructions finales et assistance</h5>
-                                                    <p class="card-text">Merci d'avoir rempli le formulaire pour votre demande d'acte académique en ligne. Avant de soumettre votre demande, veuillez prendre un moment pour lire les instructions finales suivantes :</p>
-                                                    <ol>
-                                                        <li>Vérification des informations : Assurez-vous d'avoir correctement rempli toutes les sections du formulaire avec les informations exactes. Cela inclut vos coordonnées personnelles, les pièces jointes requises et les détails de paiement. Des informations précises garantissent un traitement rapide et efficace de votre demande.</li>
-                                                        <li>Assistance supplémentaire : Si vous avez des questions ou si vous avez besoin d'aide supplémentaire pour remplir ce formulaire, n'hésitez pas à contacter notre équipe d'assistance dédiée. Vous pouvez nous joindre par téléphone au <strong>(+229) 55 02 80 70</strong> ou par e-mail à <a href="mailto:secretariat@ifri.uac.bj">secretariat@ifri.uac.bj</a>. Nous sommes là pour vous aider et répondre à toutes vos questions.</li>
-                                                        <li>Confirmation de soumission : Après avoir soumis votre demande, vous recevrez un e-mail de confirmation contenant le code d'enregistrement de votre demande, ceci vous permettra de vérifier le statut de votre demande. Veuillez vérifier votre boîte de réception et votre dossier de courriers indésirables pour vous assurer de recevoir notre e-mail. Si vous ne recevez pas de confirmation dans les 24 heures suivant votre soumission, veuillez nous contacter immédiatement.</li>
-                                                    </ol>
-                                                    <p>Nous vous remercions de votre confiance en notre service en ligne. Nous nous engageons à fournir une expérience de demande fluide et efficace. Si vous avez des préoccupations ou des commentaires concernant votre expérience, n'hésitez pas à nous les partager. Votre feedback est précieux pour nous aider à améliorer nos services.</p>
-                                                </div>
+                                        <div class="col-xl-12 col-xxl-12">
+                                            <div style="text-align: justify">
+                                                <h5 class="card-title" style="font-weight: bold; color:black; font-size:1.3rem;">Instructions finales et assistance</h5>
+                                                <p>Merci d'avoir rempli le formulaire pour votre demande de {{ $nomacte }} en ligne. Avant de soumettre votre demande, veuillez prendre un moment pour lire les instructions finales suivantes :</p>
+                                                <ol style="line-height: 1.8;">
+                                                    <li style="margin-bottom:12px;"><span style="font-weight: bold; color:black;">Vérification des informations :</span> Assurez-vous d'avoir correctement rempli toutes les sections du formulaire avec les informations exactes. Cela inclut vos coordonnées personnelles, les pièces jointes requises et les détails de paiement. Des informations précises garantissent un traitement rapide et efficace de votre demande.</li>
+                                                    <li style="margin-bottom:12px;"><span style="font-weight: bold; color:black;">Assistance supplémentaire :</span> Si vous avez des questions ou si vous avez besoin d'aide supplémentaire pour remplir ce formulaire, n'hésitez pas à contacter notre équipe d'assistance dédiée. Vous pouvez nous joindre par téléphone au <strong>(+229) 55 02 80 70</strong> ou par mail à <strong><a href="mailto:secretariat@ifri.uac.bj">secretariat@ifri.uac.bj</a></strong>. Nous sommes là pour vous aider et répondre à toutes vos questions.</li>
+                                                    <li><span style="font-weight: bold; color:black;">Confirmation de soumission :</span> Après avoir soumis votre demande, vous recevrez un e-mail de confirmation contenant le code d'enregistrement de votre demande, ceci vous permettra de vérifier le statut de votre demande. Veuillez vérifier votre boîte de réception et votre dossier de courriers indésirables pour vous assurer de recevoir notre e-mail. Si vous ne recevez pas de confirmation dans les 24 heures suivant votre soumission, veuillez nous contacter immédiatement.</li>
+                                                </ol>
+                                                <p>Nous vous remercions de votre confiance en notre service en ligne. Nous nous engageons à fournir une expérience de demande fluide et efficace. Si vous avez des préoccupations ou des commentaires concernant votre expérience, n'hésitez pas à nous les partager. Votre feedback est précieux pour nous aider à améliorer nos services.</p>
                                             </div>
                                         </div>
                                     </div>

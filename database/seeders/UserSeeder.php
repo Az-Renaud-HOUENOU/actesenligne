@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             'email' => 'codjojean@gmail.com',
             'matricule' => '52896247',
             'password' => Hash::make('CJEAN'),
-            'contact' => '96587412'
+            'contact' => '64848498'
         ]);
     }
 }
