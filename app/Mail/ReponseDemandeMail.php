@@ -24,7 +24,7 @@ class ReponseDemandeMail extends Mailable
     public function build()
     {
         return $this->from("contact@ifri.uac.bj") // L'expéditeur
-                    ->subject('Réponse à votre demande d\'acte')
+                    ->subject('Réponse à votre demande d\'acte académique')
                     ->view('emails.reponsedemande')
                     ->attach($this->data['chemin_fichier_complet']);
     }

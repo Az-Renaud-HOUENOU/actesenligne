@@ -107,7 +107,9 @@ class DemandeController extends Controller
             'motif_rejet' => $request->motif_rejet
         ];
 
-        Mail::to($demande->etudiant->email)->send(new DemandeRejeterMail($data));
+        $email = $demande->etudiant->email ?? null;
+        
+        Mail::to($email)->send(new DemandeRejeterMail($data));
 
         $client = new Client([
             'base_uri' => "https://ppr4pl.api.infobip.com/",

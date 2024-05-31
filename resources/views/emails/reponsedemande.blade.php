@@ -16,7 +16,11 @@
                 <div class="col-lg-6 offset-lg-3 col-12">
 
                     <div class="success-inner">
-                        <p>Bonjour {{ $data['nom']}}&nbsp;{{ $data['prenoms'] }},</p>
+
+                        <h1><i class="fa fa-envelope"></i><span>Réponse de IFRI-UAC à votre demande d'acte
+                            académique</span></h1>
+                        
+                        <p>Bonjour Mr/Mme {{ $data['nom']}}&nbsp;{{ $data['prenoms'] }},</p>
 
                         <p>Nous avons le plaisir de vous informer que votre demande pour l'acte {{ $data['actedemande'] }} a été traitée avec succès.</p>
 

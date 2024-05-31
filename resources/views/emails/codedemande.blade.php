@@ -16,7 +16,9 @@
                 <div class="col-lg-6 offset-lg-3 col-12">
 
                     <div class="success-inner">
+
                         <h1><i class="fa fa-envelope"></i><span>Code de votre demande de {{$data['actedemande']}}</span></h1>
+                        
                         <p>Mr/Mme, votre demande de {{$data['actedemande']}} a été
                             reçue et bien enregistrée sous le code de demande <u><b>{{ $data['codedemande'] }}.</b></u>
                         </p>

@@ -20,7 +20,7 @@ class DemandeVerificationEmail extends Mailable
     public function build()
     {
         return $this->from("contact@ifri.uac.bj") // L'expéditeur
-                    ->subject("Demande reçu") // Le sujet
+                    ->subject("Demande reçue") // Le sujet
                     ->view('emails.codedemande');
     }
 }

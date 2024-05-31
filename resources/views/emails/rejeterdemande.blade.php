@@ -22,10 +22,9 @@
                         <h1><i class="fa fa-envelope"></i><span>Réponse de IFRI-UAC à votre demande d'acte
                                 académique</span></h1>
 
-
                         <p>
                             Mr/Mme {{ $data['nom'] }}&nbsp;{{ $data['prenoms'] }}, votre demande de  {{ $data['actedemande'] }} enregistré sous le code de demande
-                            <u><b>{{ $data['code_demande'] }}</b></u> a été rejeté pour {{ $data['motif_rejet'] }} Merci !
+                            <u><b>{{ $data['code_demande'] }}</b></u> a été rejetée pour {{ $data['motif_rejet'] }}. Merci !
                         </p>
 
                         <p>Suivez votre demande sur notre site avec votre code de demande.</p>

@@ -130,7 +130,9 @@ class ReleveController extends Controller
             'actedemande' => $acte_demande
         ];
 
-        Mail::to($request->email)->send(new DemandeVerificationEmail($data));
+        $email = $request->email ?? null;
+
+        Mail::to($email)->send(new DemandeVerificationEmail($data));
 
         session()->flash('success', "Demande soumise avec succès! Le code de votre demande est: $code_demande");
 

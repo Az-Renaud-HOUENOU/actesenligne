@@ -52,10 +52,9 @@ class ReponseController extends Controller
         $reponse->save();
 
         $demande = Demande::find($demande);
-               
-        // Récupérer les détails de l'étudiant et de la demande
+
         $data = [
-            'etudiant_mail' => $demande->etudiant->email,
+            'etudiant_mail' => $demande->etudiant->email ?? null,
             'nom' => $demande->etudiant->nom,
             'prenoms' => $demande->etudiant->prenom,
             'actedemande' => $demande->acteAcademique->type_acte,
@@ -63,7 +62,7 @@ class ReponseController extends Controller
             'chemin_fichier_complet' => public_path('storage/'.$reponse->fichier_acte)
         ];
 
-        Mail::to($data['etudiant_mail'])->queue(new ReponseDemandeMail($data));
+        Mail::to($data['etudiant_mail'])->send(new ReponseDemandeMail($data));
 
         $client = new Client([
             'base_uri' => "https://ppr4pl.api.infobip.com/",
