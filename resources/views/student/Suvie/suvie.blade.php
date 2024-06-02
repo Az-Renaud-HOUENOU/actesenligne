@@ -30,7 +30,7 @@
                         <form  action=" {{ route('student.suivie.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div>
-                                <h4>Entre Le code a neuf (09) chiffre que vous avez recu</h4>
+                                <h4>Entrez le code a neuf (09) chiffre que vous avez recu</h4>
                                 <section>
                                         <div class="row">
                                             <div class="col-lg-6 mb-4">
