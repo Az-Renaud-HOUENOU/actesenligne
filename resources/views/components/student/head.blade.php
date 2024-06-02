@@ -30,10 +30,10 @@
     <link rel="stylesheet" href=" {{ asset('student/vendor/jqvmap/css/jqvmap.min.css') }} ">
 	<link rel="stylesheet" href=" {{ asset('student/vendor/chartist/css/chartist.min.css') }} ">
 
-	<link rel="stylesheet" href=" {{ asset('student/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }} ">
     <link rel="stylesheet" href="{{ asset('student/css/style.css') }}">
     <link rel="stylesheet" href=" {{ asset('student/css/skin-3.css') }} ">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-default@3.2.2/default.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>

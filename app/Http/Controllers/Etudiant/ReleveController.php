@@ -137,9 +137,9 @@ class ReleveController extends Controller
         session()->flash('success', "Demande soumise avec succès! Le code de votre demande est: $code_demande");
 
         $client = new Client([
-            'base_uri' => "https://ppr4pl.api.infobip.com/",
+            'base_uri' => "https://mm5pxj.api.infobip.com/",
             'headers' => [
-                'Authorization' => "App 090a4ef9cb3100d5253f5883b6c239ce-cd51ed61-03f0-462e-ae05-3a6b335367b6",
+                'Authorization' => "App 5a421eb789d3eb6fddfd84e215d474ab-5acd5cfd-648e-4e4d-a57c-21607d949c23",
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
             ]
@@ -154,9 +154,9 @@ class ReleveController extends Controller
                         [
                             'from' => 'IFRI-UAC',
                             'destinations' => [
-                                ['to' => "'.$request->numero.'"]
+                                ['to' => $request->numero]
                             ],
-                            'text' => 'Votre demande de '.$acte_demande.' à IFRI-UAC a été enregistrée sous le code de demande '. $demande['code'],
+                            'text' => 'Votre demande de ' .$acte_demande. ' à IFRI-UAC a été enregistrée sous le code de demande ' . $demande['code'],
                         ]
                     ]
                 ],
@@ -164,7 +164,7 @@ class ReleveController extends Controller
         );
 
         // Envoi d'une notification à l'utilisateur pour la nouvelle demande
-        $etudiantRelation = $demande->etudiant(); // Obtenez la relation BelongsTo
+        $etudiantRelation = $demande->etudiant(); // Obtenir la relation BelongsTo
         $etudiant = $etudiantRelation->first();
 
         if ($etudiant) {

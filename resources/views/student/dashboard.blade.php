@@ -74,6 +74,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+
         var acteRadios = document.querySelectorAll('.acteSelectionne');
         var divDescription = document.getElementById('divDescription');
         var descriptionActe = document.getElementById('descriptionActe');
@@ -101,20 +102,19 @@
 
             });
         });
+        
     });
 </script>
 
 @if (session('success'))
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            Swal.fire({
-                icon: 'success',
-                title: 'Succès!',
-                text: "{{ session('success') }}",
-                showConfirmButton:true,
-                closeOnConfirm:true,
-                confirmButtonText: 'OK'
-            });
+        Swal.fire({
+            icon: 'success',
+            title: 'Succès!',
+            text: "{{ session('success') }}",
+            showConfirmButton:true,
+            closeOnConfirm:true,
+            confirmButtonText: 'OK'
         });
     </script>
 @endif

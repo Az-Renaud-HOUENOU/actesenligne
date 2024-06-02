@@ -65,9 +65,9 @@ class ReponseController extends Controller
         Mail::to($data['etudiant_mail'])->send(new ReponseDemandeMail($data));
 
         $client = new Client([
-            'base_uri' => "https://ppr4pl.api.infobip.com/",
+            'base_uri' => "https://mm5pxj.api.infobip.com/",
             'headers' => [
-                'Authorization' => "App 090a4ef9cb3100d5253f5883b6c239ce-cd51ed61-03f0-462e-ae05-3a6b335367b6",
+                'Authorization' => "App 5a421eb789d3eb6fddfd84e215d474ab-5acd5cfd-648e-4e4d-a57c-21607d949c23",
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
             ]
@@ -82,20 +82,21 @@ class ReponseController extends Controller
                         [
                             'from' => 'IFRI-UAC',
                             'destinations' => [
-                                ['to' => "'.$request->numero.'"]
+                                ['to' => $demande->etudiant->contact]
                             ],
-                            'text' => 'Votre demande de '.$demande->acteAcademique->type_acte.' à IFRI-UAC enregistreé sous le code de demande '. $demande->code. 'a été déjà traitée. Consultez votre boite mail pour télécharger votre acte demandé.',
+                            'text' => 'Votre demande de ' .$demande->acteAcademique->type_acte. ' à IFRI-UAC enregistreé sous le code de demande ' . $demande->code. 'a été déjà traitée. Consultez votre boite mail pour télécharger votre acte demandé.',
                         ]
                     ]
                 ],
             ]
         );
 
-        $demande=Demande::find($demande);
         $demande->statut='Traitée';
         $demande->save();
 
-        return redirect()->route('demandes')->with('success', 'La réponse a été envoyée avec succès.');
+        session()->flash('success', 'La réponse a été envoyée avec succès.');
+
+        return redirect()->route('demandes');
     }
 
     /**

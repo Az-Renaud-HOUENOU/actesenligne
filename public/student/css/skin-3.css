@@ -143,7 +143,7 @@ table.dataTable tr.selected {
 .badge-primary {
   background-color: #1367c8; }
 .page-titles h4 {
-  color: #1367c8; }
+  color: #45B37E; }
 .card-action > a {
   background: black; }
 .card-action .dropdown {
@@ -236,7 +236,7 @@ svg.pulse-svg .first-circle, svg.pulse-svg .second-circle, svg.pulse-svg .third-
 .dlabnav .metismenu > li:hover > a, .dlabnav .metismenu > li:focus > a {
   color: #1367c8; }
 .dlabnav .metismenu > li.mm-active > a {
-  color: #1367c8; }
+  color: #FFA446; }
 .dlabnav .metismenu ul a:hover, .dlabnav .metismenu ul a:focus, .dlabnav .metismenu ul a.mm-active {
   color: #1367c8; }
 @media (min-width: 767px) {

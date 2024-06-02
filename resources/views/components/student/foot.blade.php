@@ -7,7 +7,6 @@
     ***********************************-->
     <!-- Required vendors -->
     <script src="{{ asset('student/vendor/global/global.min.js') }}"></script>
-	<script src=" {{ asset('student/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}    "></script>
     <script src="{{ asset('student/js/custom.min.js') }}"></script>
     <script src=" {{ asset('student/js/dlabnav-init.js') }} "></script>
 
@@ -32,8 +31,6 @@
     <script src="{{ asset('student/vendor/svganimation/svg.animation.js') }}"></script>
     <script src=" {{ asset('student/js/styleSwitcher.js') }}"></script>
     <script src=" {{ asset('student/js/stepper.js') }}"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="{{ asset('admin/vendor/jquery-steps/build/jquery.steps.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/jquery-validation/jquery.validate.min.js') }}"></script>

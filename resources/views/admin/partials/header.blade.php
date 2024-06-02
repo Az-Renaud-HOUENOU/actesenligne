@@ -31,7 +31,9 @@
                                                         <p><strong>{{ $notification->etudiant }}</strong> a effectué une demande de <strong>{{ $notification->type_acte_demande }}</strong>.</p>
                                                     </a>
                                                 </div>
-                                                <span class="notify-time">{{ $notification->heure_demande->format('h:i a') }}</span>
+                                                @if (!is_null($notification->heure_demande))
+                                                    <span class="notify-time">{{ $notification->heure_demande->format('h:i a') }}</span>
+                                                @endif
                                             </li>
                                         @endforeach
                                     </ul>

@@ -106,17 +106,6 @@
       0 => 'Termwind\\Laravel\\TermwindServiceProvider',
     ),
   ),
-  'realrashid/sweet-alert' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'RealRashid\\SweetAlert\\SweetAlertServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Alert' => 'RealRashid\\SweetAlert\\Facades\\Alert',
-    ),
-  ),
   'spatie/laravel-html' => 
   array (
     'providers' => 
@@ -144,6 +133,13 @@
     'providers' => 
     array (
       0 => 'Spatie\\Permission\\PermissionServiceProvider',
+    ),
+  ),
+  'wavey/sweetalert' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Wavey\\Sweetalert\\SweetalertServiceProvider',
     ),
   ),
 );

@@ -11308,7 +11308,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   font-size: 0.75rem;
   letter-spacing: 0.05rem;
   border-top: 1px solid #eaeaea;
-  color: #999999; }
+  color: #fff; }
   [data-theme-version="dark"] .nav-label {
     border-color: #383c46; }
   .nav-label.first {
@@ -11483,6 +11483,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   100% {
     transform: rotate(0); } }
 .dlabnav {
+  border-top: 0.5px white solid;
   width: 17.1875rem;
   padding-bottom: 112px;
   height: 100%;
@@ -11490,12 +11491,12 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   top: 5rem;
   padding-top: 0;
   z-index: 2;
-  background-color: #fff;
+  background-color: hsl(206, 100%, 41.2%);
   transition: all .2s ease;
   box-shadow: 0px 0px 40px 0px rgba(82, 63, 105, 0.1); }
   @media only screen and (max-width: 767px) {
     .dlabnav {
-      background-color: #fff;
+      background-color: hsl(206, 100%, 41.2%);
       box-shadow: 0px 0px 10px rgba(120, 130, 140, 0.13); } }
   .dlabnav .dlabnav-scroll {
     position: relative;
@@ -11531,7 +11532,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
           display: block;
           padding: 0; }
       .dlabnav .metismenu > li > a {
-        color: #111;
+        color: #fff;
         font-weight: 600;
         display: inline-block; }
         .dlabnav .metismenu > li > a svg {
@@ -13067,7 +13068,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 [data-nav-headerbg="color_11"][data-theme-version="dark"] .nav-header,
 [data-nav-headerbg="color_11"] .nav-header {
-  background-color: #6673fd; }
+  background-color: hsl(206, 100%, 41.2%); }
   [data-nav-headerbg="color_11"][data-theme-version="dark"] .nav-header .brand-logo,
   [data-nav-headerbg="color_11"] .nav-header .brand-logo {
     color: #fff; }
@@ -22249,6 +22250,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   .page-titles .justify-content-sm-end {
     align-items: center; }
   .page-titles h4 {
+    font-weight: bold;
     margin-bottom: 0;
     margin-top: 0;
     color: #7356f1;

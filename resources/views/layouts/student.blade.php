@@ -90,7 +90,5 @@
     <!-- Required vendors -->
     @include('components.student.foot')
 
-    @include('sweetalert::alert')
-
 </body>
 </html>

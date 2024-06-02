@@ -100,6 +100,7 @@
     </div>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        
         var selectElement = document.getElementById('sel1');
         var tableRows = document.querySelectorAll('#example tbody tr');
 
@@ -117,17 +118,19 @@
                 }
             });
         });
+
     });
 </script>
 
 @if (session('success'))
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            Swal.fire({
-                icon: 'success',
-                title: 'Succès!',
-                text: "{{ session('success') }}",
-            });
+        Swal.fire({
+            icon: 'success',
+            title: 'Succès!',
+            text: "{{ session('success') }}",
+            showConfirmButton:true,
+            closeOnConfirm:true,
+            confirmButtonText: 'OK'
         });
     </script>
 @endif

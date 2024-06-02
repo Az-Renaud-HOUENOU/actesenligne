@@ -17,3 +17,6 @@
 <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-default@3.2.2/default.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

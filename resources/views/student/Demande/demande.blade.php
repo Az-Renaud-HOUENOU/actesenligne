@@ -118,7 +118,7 @@
                                                 <label class="text-label">Année académique <span style="color:red">*</span></label>
                                                 <select name="annee_academique" class="form-control" required>
                                                     <option selected>Sélectionner...</option>
-                                                    @for ($i = 0; $i < $nombre_annees; $i++)
+                                                    @for ($i = 1; $i < $nombre_annees; $i++)
                                                         @php
                                                             $annee_debut = $annee_actuelle - $i;
                                                             $annee_fin = $annee_debut + 1;

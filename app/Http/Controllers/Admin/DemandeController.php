@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\DemandeRejeterMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use RealRashid\SweetAlert\Facades\Alert;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 
@@ -112,9 +111,9 @@ class DemandeController extends Controller
         Mail::to($email)->send(new DemandeRejeterMail($data));
 
         $client = new Client([
-            'base_uri' => "https://ppr4pl.api.infobip.com/",
+            'base_uri' => "https://mm5pxj.api.infobip.com/",
             'headers' => [
-                'Authorization' => "App 090a4ef9cb3100d5253f5883b6c239ce-cd51ed61-03f0-462e-ae05-3a6b335367b6",
+                'Authorization' => "App 5a421eb789d3eb6fddfd84e215d474ab-5acd5cfd-648e-4e4d-a57c-21607d949c23",
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
             ]
@@ -129,17 +128,17 @@ class DemandeController extends Controller
                         [
                             'from' => 'IFRI-UAC',
                             'destinations' => [
-                                ['to' => "'.$request->numero.'"]
+                                ['to' => $demande->etudiant->contact]
                             ],
-                            'text' => 'Votre demande de '.$demande->acteAcademique->type_acte.' à IFRI-UAC enregistreé sous le code de demande '. $demande->code. 'a été réjetée pour '.$request->motif_rejet .'.',
+                            'text' => 'Votre demande de ' .$demande->acteAcademique->type_acte. ' à IFRI-UAC enregistreé sous le code de demande ' . $demande->code. 'a été réjetée pour ' .$request->motif_rejet .'.',
                         ]
                     ]
                 ],
             ]
         );
 
-        Alert::success('Succès!','La réponse à la demande a été bien envoyé à l\'étudiant');
+        session()->flash('success',"La réponse à la demande a été bien envoyée à l'étudiant");
 
-        return redirect()->back();
+        return redirect()->route('demandes');
     }
 }

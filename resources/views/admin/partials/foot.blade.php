@@ -36,5 +36,3 @@
 
 <script src="{{asset('admin/vendor/summernote/js/summernote.min.js')}}"></script>
 <script src="{{asset('admin/js/plugins-init/summernote-init.js')}}"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
