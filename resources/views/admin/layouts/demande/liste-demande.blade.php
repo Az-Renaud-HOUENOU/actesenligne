@@ -74,7 +74,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <button title="Voir" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-details-demande-{{$demande->id}}-lg">
+                                        <button title="Voir" type="button" class="btn btn-primary" style="background-color:hsl(206, 100%, 41.2%); border:none;" data-toggle="modal" data-target=".bd-details-demande-{{$demande->id}}-lg">
                                             <span><i class="fa fa-eye font-18 align-middle" style="color: #eaeef1"></i></span>
                                         </button>
                                         @include('admin.layouts.demande.details',["demande"=>$demande])

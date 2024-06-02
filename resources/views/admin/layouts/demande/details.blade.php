@@ -336,8 +336,8 @@
                                                             @enderror
                                                         </div>
                                                         <div class="d-flex justify-content-end">
-                                                            <button type="submit" class="btn btn-primary mr-2">Rejeter</button>
-                                                            <button class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('rejeter-form-{{ $demande->id }}').style.display='none'; document.getElementById('boutonValidation').style.display='block';">Annuler</button>
+                                                            <button type="submit" class="btn btn-danger mr-2">Rejeter</button>
+                                                            <button class="btn btn-primary" style="background-color:hsl(206, 100%, 41.2%);" onclick="event.preventDefault(); document.getElementById('rejeter-form-{{ $demande->id }}').style.display='none'; document.getElementById('boutonValidation').style.display='block';">Annuler</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -354,12 +354,12 @@
                 <div class="d-flex justify-content-end">
                     @if($demande->statut=='En attente')
                         @can('demande-validate')
-                            <a id="boutonValidation" style="padding:auto; background-color: #015291 ! important;" type="button" class="btn btn-primary pull-left mr-2" href="{{route('demande.validate',['id'=>$demande->id])}}" onclick="event.preventDefault(); document.getElementById('valider-form-{{ $demande->id }}').submit();">
+                            <a id="boutonValidation" style="padding:auto; background-color: #45B37E; border:none;" type="button" class="btn btn-primary pull-left mr-2" href="{{route('demande.validate',['id'=>$demande->id])}}" onclick="event.preventDefault(); document.getElementById('valider-form-{{ $demande->id }}').submit();">
                                 <h6 style="color: #fff ! important; font-weight:bold">Valider</h6>
                             </a>
                         @endcan
                         @can('demande-reject')
-                            <a id="boutonRejet" style="padding:auto; background-color: #f7b200 ! important;" type="button" class="btn btn-primary pull-right" href="#" onclick="event.preventDefault(); document.getElementById('rejeter-form-{{ $demande->id }}').style.display='block'; document.getElementById('boutonValidation').style.display='none';">
+                            <a id="boutonRejet" style="padding:auto; background-color: #FFA446 ; border:none;" type="button" class="btn btn-primary pull-right" href="#" onclick="event.preventDefault(); document.getElementById('rejeter-form-{{ $demande->id }}').style.display='block'; document.getElementById('boutonValidation').style.display='none';">
                                 <h6 style="font-weight:bold">Rejeter</h6>
                             </a>
                         @endcan
