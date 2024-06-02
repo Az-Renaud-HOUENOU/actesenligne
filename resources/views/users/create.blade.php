@@ -18,16 +18,16 @@
     </div>
 </div>
 
-<div class="row">
+{{-- <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
             <h2>Gestion des utilisateurs</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('users.create') }}"> Créer un nouveau administrateur</a>
+            <a class="btn btn-success" href="{{ route('users.create') }}" style="background-color:#45B37E;"> Créer un nouveau administrateur</a>
         </div>
     </div>
-</div>
+</div> --}}
 
 <div class="row">
     <div class="col-lg-12 margin-tb">
@@ -35,7 +35,7 @@
             <h2>Créer un nouveau administrateur</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('users.index') }}"> Retour</a>
+            <a class="btn btn-primary" href="{{ route('users.index') }}" style="background-color:hsl(206, 100%, 41.2%); border:none;"> Retour</a>
         </div>
     </div>
 </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" style="background-color:hsl(206, 100%, 41.2%); border:none;">Soumettre</button>
     </div>
 </div>
 {!! Form::close() !!}

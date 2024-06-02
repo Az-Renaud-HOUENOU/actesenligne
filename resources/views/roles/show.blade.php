@@ -23,7 +23,7 @@
             <h2> Afficher Rôle</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Retour</a>
+            <a class="btn btn-primary" href="{{ route('roles.index') }}" style="background-color:hsl(206, 100%, 41.2%); border:none;"> Retour</a>
         </div>
     </div>
 </div>
@@ -41,7 +41,7 @@
             <strong>Permissions:</strong>
             @if(!empty($rolePermissions))
                 @foreach($rolePermissions as $v)
-                    <label class="label label-success">{{ $v->name }}</label>
+                    <label class="label label-success" style="color:#fff; background-color:#45B37E;">{{ $v->name }}</label>
                 @endforeach
             @endif
         </div>

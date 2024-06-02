@@ -260,9 +260,13 @@ body {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #BDBDC7;
+  color: #6a6a71;
   text-align: left;
   background-color: rgba(88, 115, 254, 0.04); }
+
+.nav-label.first{
+color:#fff;
+}
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
@@ -8060,7 +8064,7 @@ a {
   position: absolute;
   left: 0;
   top: 0;
-  background-color: #343957;
+  background-color: hsl(206, 100%, 41.2%);
   transition: all .2s ease;
   z-index: 4; }
   .nav-header .logo-abbr {
@@ -10288,6 +10292,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   padding-right: 9.375rem; }
 
 .nav-label {
+  color:#fff;
   margin: 0px 25px 0;
   padding: 1.5625rem 0 10px;
   text-transform: uppercase;
@@ -10308,6 +10313,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
       margin-left: 14.375rem; } }
 
 .quixnav {
+  border-top: 0.5px white solid;
   width: 17.1875rem;
   padding-bottom: 112px;
   height: 100%;
@@ -10315,7 +10321,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   top: 5rem;
   padding-top: 0;
   z-index: 2;
-  background-color: #343957;
+  background-color: hsl(206, 100%, 41.2%);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   transition: all .2s ease; }
   .quixnav .quixnav-scroll {
@@ -10348,10 +10354,17 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
         position: relative;
         top: -2px; }
       .quixnav .metismenu > li > a {
-        color: #bdbdc7; }
-      .quixnav .metismenu > li:hover > a, .quixnav .metismenu > li:focus > a, .quixnav .metismenu > li.mm-active > a {
-        background-color: #6b51df;
+        font-weight:bold;
         color: #fff; }
+      .quixnav .metismenu > li:hover > a{
+        font-weight:bold;
+        background-color: #fff;
+        color: hsl(206, 100%, 41.2%);
+      } 
+      .quixnav .metismenu > li:focus > a, .quixnav .metismenu > li.mm-active > a {
+        font-weight:bold;
+        background-color: #fff;
+        color: #FFA446; }
       .quixnav .metismenu > li.mm-active ul {
         background-color: rgba(88, 115, 254, 0.04); }
         .quixnav .metismenu > li.mm-active ul ul {
@@ -10378,7 +10391,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
       display: block;
       padding: 0.8125rem 1.25rem;
       outline-width: 0;
-      color: #bdbdc7;
+      color: #fff;
       text-decoration: none; }
     .quixnav .metismenu .has-arrow:after {
       width: .35rem;
@@ -15080,9 +15093,10 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   .page-titles .justify-content-sm-end {
     align-items: center; }
   .page-titles h4 {
+    font-weight: bold;
     margin-bottom: 0;
     margin-top: 0;
-    color: #593bdb;
+    color: #45B37E;
     font-size: 1.25rem; }
     .page-titles h4 span {
       font-size: 0.875rem;

@@ -24,8 +24,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#FFA446; border:none">Annuler</button>
+                        <button type="submit" class="btn btn-primary" style="background-color:#45B37E; border:none">Ajouter</button>
                     </div>
                 </form>
             </div>

@@ -44,7 +44,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class="text-center mt-4">
-                                                    <button type="submit" class="btn btn-primary btn-block">Vérifier</button>
+                                                    <button type="submit" class="btn btn-primary btn-block" style="background-color:hsl(206, 100%, 41.2%); border:none;">Vérifier</button>
                                                 </div>
                                             </div>
                                         </div>

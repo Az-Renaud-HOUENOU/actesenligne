@@ -31,7 +31,7 @@
                 <h4 class="card-title">Liste des actes académiques</h4>
 
                 <div class="d-flex text-end">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicModal-create-acte-academique">Ajouter</button>
+                    <button type="button" class="btn btn-primary" style="background-color:#45B37E; border:none;" data-toggle="modal" data-target="#basicModal-create-acte-academique">Ajouter</button>
                 </div>
 
             </div>

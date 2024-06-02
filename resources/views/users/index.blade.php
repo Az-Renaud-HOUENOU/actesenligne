@@ -32,7 +32,7 @@
                     <h2>Gestion des Etudiants</h2>
                 </div>
                 <div class="pull-right">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#basicModal-create-user-etudiant">Ajouter un nouveau étudiant</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#basicModal-create-user-etudiant" style="background-color:#45B37E;">Ajouter un nouveau étudiant</button>
                 </div>
             </div>
             <div class="card-body">
@@ -62,7 +62,7 @@
                               <td>{{$etudiant->contact}}</td>
                               <td class="align-middle">
                                 <div class="d-flex justify-content-flex-start">
-                                    <a class="btn btn-primary btn-sm mr-1" data-toggle="modal" data-target="#basicModal-edit-user-etudiant-{{$etudiant->id}}">Modifier</a>
+                                    <a class="btn btn-primary btn-sm mr-1" data-toggle="modal" data-target="#basicModal-edit-user-etudiant-{{$etudiant->id}}" style="color:#fff; background-color:hsl(206, 100%, 41.2%); border:none;">Modifier</a>
                                     @include('admin.layouts.utilisateurs.edit-etudiant',["etudiant"=>$etudiant])
                                     {!! Form::open(['method' => 'DELETE','route' => ['utilisateur.supetudiant', $etudiant->id],'style'=>'display:inline','onsubmit' => "return confirm('Êtes-vous sûr de vouloir supprimer cet étudiant ?')"]) !!}
                                         @csrf
@@ -102,7 +102,7 @@
                     <h2>Gestion des Administrateurs</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-success" href="{{ route('users.create') }}"> Ajouter un nouveau admin</a>
+                    <a class="btn btn-success" href="{{ route('users.create') }}" style="background-color:#45B37E;"> Ajouter un nouveau admin</a>
                 </div>
             </div>
             <div class="card-body">
@@ -128,15 +128,16 @@
                                     <td>
                                         @if(!empty($user->getRoleNames()))
                                         @foreach($user->getRoleNames() as $v)
-                                            <label class="badge badge-success">{{ $v }}</label>
+                                            <label class="badge badge-success" style="color:#fff; background-color:#45B37E;">{{ $v }}</label>
                                         @endforeach
                                         @endif
                                     </td>
                                     <td>
-                                        <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Voir</a>
-                                        <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Modifier</a>
-                                        {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
-                                            {!! Form::submit('Supprimer', ['class' => 'btn btn-danger']) !!}
+                                        <a class="btn btn-info" href="{{ route('users.show',$user->id) }}" style="color:#fff; background-color:#45B37E;">Voir</a>
+                                        <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}" style="background-color:hsl(206, 100%, 41.2%); border:none;">Modifier</a>
+                                        {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline','onsubmit' => "return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')"]) !!}
+                                            @csrf
+                                            {!! Form::submit('Supprimer', ['class' => 'btn btn-danger', 'style'=>'color:FFA446']) !!}
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>

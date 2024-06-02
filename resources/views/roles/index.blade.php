@@ -33,7 +33,7 @@
                 </div>
                 <div class="pull-right">
                     {{-- @can('role-create') --}}
-                        <a class="btn btn-success" href="{{ route('roles.create') }}"> Créer un nouveau rôle</a>
+                        <a class="btn btn-success" href="{{ route('roles.create') }}" style="background-color:#45B37E;"> Créer un nouveau rôle</a>
                     {{-- @endcan --}}
                 </div>
             </div>
@@ -53,13 +53,14 @@
                                 <td>{{ ++$i }}</td>
                                 <td>{{ $role->name }}</td>
                                 <td>
-                                    <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">Voir</a>
+                                    <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}" style="color:#fff; background-color:#45B37E;">Voir</a>
                                     @can('role-edit')
-                                        <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">Modifier</a>
+                                        <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}" style="background-color:hsl(206, 100%, 41.2%); border:none;">Modifier</a>
                                     @endcan
                                     @can('role-delete')
-                                        {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
-                                            {!! Form::submit('Supprimer', ['class' => 'btn btn-danger']) !!}
+                                        {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline', 'onsubmit' => "return confirm('Êtes-vous sûr de vouloir supprimer ce rôle ?')"]) !!}
+                                            @csrf
+                                            {!! Form::submit('Supprimer', ['class' => 'btn btn-danger','style'=>'color:FFA446']) !!}
                                         {!! Form::close() !!}
                                     @endcan
                                 </td>

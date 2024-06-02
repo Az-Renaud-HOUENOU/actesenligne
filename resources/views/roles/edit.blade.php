@@ -23,7 +23,7 @@
             <h2>Modifier Rôle</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Retour</a>
+            <a class="btn btn-primary" href="{{ route('roles.index') }}" style="background-color:hsl(206, 100%, 41.2%); border:none;"> Retour</a>
         </div>
     </div>
 </div>
@@ -61,7 +61,7 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Soumettre</button>
+        <button type="submit" class="btn btn-primary" style="background-color:hsl(206, 100%, 41.2%); border:none;">Soumettre</button>
     </div>
 </div>
 {!! Form::close() !!}

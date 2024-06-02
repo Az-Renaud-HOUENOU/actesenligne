@@ -23,7 +23,7 @@
             <h2> Afficher utilisateur</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('users.index') }}"> Retour</a>
+            <a class="btn btn-primary" href="{{ route('users.index') }}" style="background-color:hsl(206, 100%, 41.2%);"> Retour</a>
         </div>
     </div>
 </div>
@@ -59,7 +59,7 @@
             <strong>Rôles:</strong>
             @if(!empty($user->getRoleNames()))
                 @foreach($user->getRoleNames() as $v)
-                    <label class="badge badge-success">{{ $v }}</label>
+                    <label style="color:#fff; background-color:#45B37E;" class="badge badge-success">{{ $v }}</label>
                 @endforeach
             @endif
         </div>

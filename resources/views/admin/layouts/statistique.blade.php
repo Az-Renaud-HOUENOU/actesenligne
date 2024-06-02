@@ -25,7 +25,7 @@
                     <h2>Statistiques des demandes par mois</h2>
                 </div>
                 <div class="pull-right">
-                    <a type="button" class="btn btn-success" href="{{ route('exporter.statistique') }}">Exporter en pdf</a>
+                    <a type="button" class="btn btn-success" href="{{ route('exporter.statistique') }}" style="background-color:#45B37E;">Exporter en pdf</a>
                 </div>
             </div>
             <div class="card-body">
