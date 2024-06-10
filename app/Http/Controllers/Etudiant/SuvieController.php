@@ -13,7 +13,12 @@ class SuvieController extends Controller
      */
     public function index()
     {
-        $notifications = collect(session('etudiant_notifications', []));
+        $notifications = collect(session('etudiant_notifications', []))->map(function ($notification) {
+            return [
+                'type_acte_demande' => $notification->demande->acteAcademique->type_acte,
+                'heure_demande' => $notification->heure_demande->format('h:i a'),
+            ];
+        })->toArray();
         return view('student.Suvie.suvie', compact('notifications'));
     }
 
