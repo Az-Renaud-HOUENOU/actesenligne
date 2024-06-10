@@ -23,7 +23,7 @@
             <h2> Afficher utilisateur</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('users.index') }}" style="background-color:hsl(206, 100%, 41.2%);"> Retour</a>
+            <a class="btn btn-primary" href="{{ route('users.index') }}" style="background-color:hsl(206, 100%, 41.2%); border:none;"> Retour</a>
         </div>
     </div>
 </div>

@@ -31,12 +31,12 @@
                                         <span class="success"><i class="ti-image"></i></span>
                                         <div class="media-body">
                                             <a href="#">
-                                                <p><strong>Vous</strong> avez effectué une demande de <strong>{{ $notification->type_acte_demande }}</strong> avec succès</p>
+                                                <p><strong>Vous</strong> avez effectué une demande de <strong>{{ $notification['type_acte_demande'] }}</strong> avec succès</p>
                                             </a>
                                         </div>
-                                        @if (!is_null($notification->heure_demande))
+                                        @if (!is_null($notification['heure_demande']))
                                             <span class="notify-time">
-                                                {{ $notification->heure_demande ?? 'N/A' }}
+                                                {{ $notification['heure_demande'] ?? 'N/A' }}
                                             </span> 
                                         @endif                                          
                                     </li>

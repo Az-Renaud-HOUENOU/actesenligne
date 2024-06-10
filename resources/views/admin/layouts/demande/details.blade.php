@@ -336,8 +336,8 @@
                                                             @enderror
                                                         </div>
                                                         <div class="d-flex justify-content-end">
-                                                            <button type="submit" class="btn btn-danger mr-2">Rejeter</button>
-                                                            <button class="btn btn-primary" style="background-color:hsl(206, 100%, 41.2%);" onclick="event.preventDefault(); document.getElementById('rejeter-form-{{ $demande->id }}').style.display='none'; document.getElementById('boutonValidation').style.display='block';">Annuler</button>
+                                                            <button type="submit" class="btn btn-danger mr-2" style="border:none;">Rejeter</button>
+                                                            <button class="btn btn-primary" style="background-color:hsl(206, 100%, 41.2%); border:none;" onclick="event.preventDefault(); document.getElementById('rejeter-form-{{ $demande->id }}').style.display='none'; document.getElementById('boutonValidation').style.display='block';">Annuler</button>
                                                         </div>
                                                     </div>
                                                 </div>
